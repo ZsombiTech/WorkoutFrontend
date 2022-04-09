@@ -7,8 +7,10 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <div style={{ marginTop: "5rem", textAlign: "center" }}>
-        <Home />
+      <div style={{ marginTop: "5rem" }}>
+        <body>
+          <Home />
+        </body>
       </div>
     </div>
   );

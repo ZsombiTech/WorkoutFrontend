@@ -1,9 +1,13 @@
 import * as React from "react";
+import ProfileSection from "./ProfileSection";
+import "../styles/costum2.css";
 
-export default function Navbar() {
+export default function Home() {
   return (
     <>
-      <h1>Welcome to the page</h1>
+      <div>
+        <ProfileSection />
+      </div>
     </>
   );
 }

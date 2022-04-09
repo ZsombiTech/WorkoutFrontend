@@ -1,0 +1,79 @@
+.profilebox {
+  width: 35rem;
+  padding: 3rem;
+  border: 0.1rem solid #2f334a;
+  margin-left: 2rem;
+  margin-right: 10rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  background-color: #2f334a;
+}
+
+.profileflexbox {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.profiletitle {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 2rem;
+  margin-top: -2rem;
+}
+
+.profiletext {
+  margin-left: 4rem;
+}
+
+.profiledescripton {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #646982;
+  margin-bottom: 2rem;
+}
+
+.flexbuttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.profilesubmitbutton {
+  background-color: #373b55;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  color: #fff;
+  margin-right: 0.5rem;
+}
+
+.profilesubmitbutton2 {
+  background-color: #373b55;
+  border-radius: 1.5rem;
+  white-space: nowrap;
+  padding: 1rem;
+  color: #fff;
+}
+
+.profilepictureimg {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.profileflexbox2 {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profileshowtasks {
+  color: #646982;
+}
+
+.profileshowall {
+  color: #646982;
+}
+
+.profileshowadd {
+  color: #646982;
+}

@@ -1,4 +1,4 @@
-.page {
-  opacity: 85%;
-  background-color: #181d31;
+body {
+  height: 100vw;
+  background-color: #2b2e43 !important;
 }
