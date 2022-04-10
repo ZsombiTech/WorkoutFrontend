@@ -2,3 +2,9 @@ body {
   height: 100vw;
   background-color: #2b2e43 !important;
 }
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 2vw;
+  }
+}

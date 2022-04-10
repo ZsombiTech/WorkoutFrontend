@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled, useTheme, makeStyles } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -65,6 +65,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
+  backgroundColor: "#2b2e43",
   justifyContent: "flex-end",
 }));
 
