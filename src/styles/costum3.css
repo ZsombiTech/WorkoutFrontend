@@ -27,3 +27,16 @@
   margin-left: 66.7rem;
   margin-top: -1rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .taskscontainer {
+    width: 100%;
+    margin-left: 0;
+  }
+  .taskscontainertext {
+    margin-left: 60%;
+  }
+  .taskscontainertext2 {
+    margin-left: 40%;
+  }
+}
