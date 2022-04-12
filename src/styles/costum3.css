@@ -1,0 +1,29 @@
+.taskscontainer {
+  width: 82rem;
+  padding: 3rem;
+  border: 0.1rem solid #2f334a;
+  margin-left: 1rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  background-color: #2f334a;
+}
+
+.pageflexboxtext {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2vw;
+}
+
+.taskscontainertext {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #646982;
+  margin-left: 70rem;
+  margin-top: -1rem;
+}
+
+.taskscontainertext2 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #646982;
+  margin-left: 66.7rem;
+  margin-top: -1rem;
+}
