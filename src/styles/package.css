@@ -59,3 +59,11 @@
 .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {
   stroke: transparent;
 }
+
+.css-2ijhs7-MuiDrawer-docked .MuiDrawer-paper {
+  background-color: #2b2e43 !important;
+}
+
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+  background-color: #2b2e43 !important;
+}

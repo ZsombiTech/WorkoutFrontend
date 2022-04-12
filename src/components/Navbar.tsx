@@ -84,7 +84,11 @@ export default function PersistentDrawerLeft() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{ backgroundColor: "#2b2e43", border: "none" }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -99,6 +103,7 @@ export default function PersistentDrawerLeft() {
       </AppBar>
       <Drawer
         sx={{
+          backgroundColor: "#2b2e43",
           width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
@@ -120,7 +125,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
+        <List style={{ backgroundColor: "#2b2e43", color: "#6B7093" }}>
           {["Workout1", "Workout2", "Workout3", "Workout4"].map(
             (text, index) => (
               <ListItem button key={text}>
@@ -130,7 +135,7 @@ export default function PersistentDrawerLeft() {
           )}
         </List>
         <Divider />
-        <List>
+        <List style={{ backgroundColor: "#2b2e43", color: "#6B7093" }}>
           {["Workout1", "Workout2", "Workout3", "Workout4"].map(
             (text, index) => (
               <ListItem button key={text}>
