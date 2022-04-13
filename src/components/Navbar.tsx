@@ -125,24 +125,22 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List style={{ backgroundColor: "#2b2e43", color: "#6B7093" }}>
-          {["Workout1", "Workout2", "Workout3", "Workout4"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
-        </List>
-        <Divider />
-        <List style={{ backgroundColor: "#2b2e43", color: "#6B7093" }}>
-          {["Workout1", "Workout2", "Workout3", "Workout4"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
+        <List
+          style={{
+            backgroundColor: "#2b2e43",
+            color: "#6B7093",
+            marginTop: "3vw",
+            display: "flex",
+            flexDirection: "column",
+            gap: "5rem",
+            textAlign: "center",
+          }}
+        >
+          {["Steps", "Calories", "Diet", "Timer"].map((text, index) => (
+            <ListItem button key={text} style={{ textAlign: "center" }}>
+              <ListItemText primary={text} style={{ textAlign: "center" }} />
+            </ListItem>
+          ))}
         </List>
       </Drawer>
       <main></main>
