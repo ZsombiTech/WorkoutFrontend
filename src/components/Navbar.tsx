@@ -13,9 +13,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
-
+import { Link } from "react-router-dom";
 import ListItemText from "@mui/material/ListItemText";
-import Home from "./Home";
 
 const drawerWidth = 240;
 
@@ -136,17 +135,19 @@ export default function PersistentDrawerLeft() {
             textAlign: "center",
           }}
         >
-          {["Steps", "Calories", "Diet", "Timer"].map((text, index) => (
-            <ListItem
-              button
-              key={text}
-              style={{ textAlign: "center", fontSize: "10rem" }}
-            >
-              <ListItemText
-                primary={text}
+          {["Home", "Steps", "Calories", "Diet", "Timer"].map((text, index) => (
+            <Link to={"/" + text}>
+              <ListItem
+                button
+                key={text}
                 style={{ textAlign: "center", fontSize: "10rem" }}
-              />
-            </ListItem>
+              >
+                <ListItemText
+                  primary={text}
+                  style={{ textAlign: "center", fontSize: "10rem" }}
+                />
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>

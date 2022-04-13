@@ -17,7 +17,7 @@ function App() {
                 <Steps />
               </body>
             </Route>
-            <Route exact path="/">
+            <Route path="/home">
               <body>
                 <Home />
               </body>
