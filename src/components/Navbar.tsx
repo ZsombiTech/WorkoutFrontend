@@ -118,9 +118,9 @@ export default function PersistentDrawerLeft() {
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
+              <ChevronLeftIcon style={{ color: "white" }} />
             ) : (
-              <ChevronRightIcon />
+              <ChevronRightIcon style={{ color: "white" }} />
             )}
           </IconButton>
         </DrawerHeader>
@@ -137,8 +137,15 @@ export default function PersistentDrawerLeft() {
           }}
         >
           {["Steps", "Calories", "Diet", "Timer"].map((text, index) => (
-            <ListItem button key={text} style={{ textAlign: "center" }}>
-              <ListItemText primary={text} style={{ textAlign: "center" }} />
+            <ListItem
+              button
+              key={text}
+              style={{ textAlign: "center", fontSize: "10rem" }}
+            >
+              <ListItemText
+                primary={text}
+                style={{ textAlign: "center", fontSize: "10rem" }}
+              />
             </ListItem>
           ))}
         </List>
