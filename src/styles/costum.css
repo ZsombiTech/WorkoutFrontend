@@ -87,8 +87,20 @@
   justify-content: space-between;
 }
 
+.profileflexbox5 {
+  margin: 2vw;
+  margin-top: 3vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .profileshowtasks {
   color: #646982;
+}
+.profileshowtasks5 {
+  font-size: 1.3rem;
+  color: white;
 }
 
 .profileshowall {
@@ -98,6 +110,12 @@
 .profileshowadd {
   color: #646982;
 }
+
+.profileshowadd5 {
+  font-size: 1.3rem;
+  color: white;
+}
+
 @media only screen and (max-width: 600px) {
   .pageflexbox {
     display: flex;
