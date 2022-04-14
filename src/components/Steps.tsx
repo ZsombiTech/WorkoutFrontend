@@ -5,7 +5,7 @@ export default function Steps() {
   return (
     <>
       <div className="ran">
-        <div className="profilebox">
+        <div className="profilebox5">
           <div className="profileflexbox4">
             <div className="profiletext2">
               <h1 className="profiletitle">Steps</h1>
@@ -32,7 +32,7 @@ export default function Steps() {
             </div>
           </div>
         </div>
-        <div className="profilebox">
+        <div className="profilebox5">
           <div className="profileflexbox4">
             <div className="profiletext2">
               <h1 className="profiletitle">Add steps</h1>
@@ -40,13 +40,13 @@ export default function Steps() {
             </div>
           </div>
           <hr />
-          <div className="flexbuttons">
+          <div className="flexbuttons2">
             <input
               type="text"
               placeholder="Steps today"
               className="stepinput"
             />
-            <button>Add steps</button>
+            <button className="stepbutton">Add steps</button>
           </div>
         </div>
       </div>
