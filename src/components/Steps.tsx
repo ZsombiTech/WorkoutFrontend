@@ -46,10 +46,12 @@ export default function Steps() {
               placeholder="Steps today"
               className="stepinput"
             />
-            <button className="stepbutton">Add steps</button>
+            <button className="stepbutton">Add</button>
           </div>
+          <br />
         </div>
       </div>
+      <br />
     </>
   );
 }

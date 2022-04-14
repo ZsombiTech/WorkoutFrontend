@@ -105,11 +105,15 @@
 }
 
 .profileflexbox5 {
-  margin: 2vw;
-  margin-top: 3vw;
+  margin: 6vw;
+  margin-bottom: 2vw;
+  margin-top: 2vw;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  border: 0.1rem solid #646982;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 .profileshowtasks {
@@ -138,8 +142,26 @@
   border: 0.2rem solid #373b55;
   border-radius: 0.7rem;
   padding: 0.2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(156, 156, 156);
+  text-align: center;
+}
+
+.stepbutton {
+  background-color: #2f334a;
+  border: 0.2rem solid #373b55;
+  border-radius: 0.7rem;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.stepbutton:hover {
+  background-color: #505573;
 }
 
 @media only screen and (max-width: 600px) {
