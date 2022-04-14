@@ -4,7 +4,7 @@ import "../styles/costum.css";
 export default function Steps() {
   return (
     <>
-      <div>
+      <div className="ran">
         <div className="profilebox">
           <div className="profileflexbox4">
             <div className="profiletext2">
