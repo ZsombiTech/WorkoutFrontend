@@ -49,49 +49,132 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 
   return (
     <React.Fragment>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
-        <TableCell>
+      <TableRow
+        sx={{ "& > *": { borderBottom: "unset" } }}
+        style={{ border: "1px solid #2f334a", color: "white" }}
+      >
+        <TableCell style={{ border: "1px solid #2f334a", color: "white" }}>
           <IconButton
             aria-label="expand row"
             size="small"
             onClick={() => setOpen(!open)}
+            style={{ color: "white" }}
           >
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell
+          component="th"
+          scope="row"
+          style={{ border: "1px solid #2f334a", color: "white" }}
+        >
           {row.name}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell
+          align="right"
+          style={{ border: "1px solid #2f334a", color: "white" }}
+        >
+          {row.calories}
+        </TableCell>
+        <TableCell
+          align="right"
+          style={{ border: "1px solid #2f334a", color: "white" }}
+        >
+          {row.fat}
+        </TableCell>
+        <TableCell
+          align="right"
+          style={{ border: "1px solid #2f334a", color: "white" }}
+        >
+          {row.carbs}
+        </TableCell>
+        <TableCell
+          align="right"
+          style={{ border: "1px solid #2f334a", color: "white" }}
+        >
+          {row.protein}
+        </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
+        <TableCell
+          style={{
+            paddingBottom: 0,
+            paddingTop: 0,
+            border: "1px solid #2f334a",
+          }}
+          colSpan={6}
+        >
+          <Collapse
+            in={open}
+            timeout="auto"
+            unmountOnExit
+            style={{ border: "1px solid #2f334a" }}
+          >
+            <Box sx={{ margin: 1 }} style={{ border: "1px solid #2f334a" }}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                component="div"
+                style={{ color: "white" }}
+              >
                 History
               </Typography>
-              <Table size="small" aria-label="purchases">
+              <Table
+                size="small"
+                aria-label="purchases"
+                style={{ border: "1px solid #2f334a" }}
+              >
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell
+                      style={{ border: "1px solid #2f334a", color: "white" }}
+                    >
+                      Date
+                    </TableCell>
+                    <TableCell
+                      style={{ border: "1px solid #2f334a", color: "white" }}
+                    >
+                      Customer
+                    </TableCell>
+                    <TableCell
+                      align="right"
+                      style={{ border: "1px solid #2f334a", color: "white" }}
+                    >
+                      Amount
+                    </TableCell>
+                    <TableCell
+                      align="right"
+                      style={{ border: "1px solid #2f334a", color: "white" }}
+                    >
+                      Total price ($)
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.history.map((historyRow) => (
                     <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        style={{ border: "1px solid #2f334a", color: "white" }}
+                      >
                         {historyRow.date}
                       </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
+                      <TableCell
+                        style={{ border: "1px solid #2f334a", color: "white" }}
+                      >
+                        {historyRow.customerId}
+                      </TableCell>
+                      <TableCell
+                        align="right"
+                        style={{ border: "1px solid #2f334a", color: "white" }}
+                      >
+                        {historyRow.amount}
+                      </TableCell>
+                      <TableCell
+                        align="right"
+                        style={{ border: "1px solid #2f334a", color: "white" }}
+                      >
                         {Math.round(historyRow.amount * row.price * 100) / 100}
                       </TableCell>
                     </TableRow>
@@ -118,19 +201,61 @@ export default function CollapsibleTable() {
   return (
     <div className="ran">
       <div className="profilebox5">
-        <TableContainer component={Paper} style={{ backgroundColor: "black" }}>
-          <Table aria-label="collapsible table">
-            <TableHead>
-              <TableRow>
-                <TableCell />
-                <TableCell>Dessert (100g serving)</TableCell>
-                <TableCell align="right">Calories</TableCell>
-                <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                <TableCell align="right">Protein&nbsp;(g)</TableCell>
+        <TableContainer
+          component={Paper}
+          style={{ backgroundColor: "#2f334a", border: "1px solid #2f334a" }}
+        >
+          <Table
+            aria-label="collapsible table"
+            style={{ backgroundColor: "#2f334a", border: "1px solid #2f334a" }}
+          >
+            <TableHead
+              style={{
+                backgroundColor: "#2f334a",
+                border: "1px solid #2f334a",
+              }}
+            >
+              <TableRow
+                style={{
+                  backgroundColor: "#2f334a",
+                  border: "1px solid #2f334a",
+                }}
+              >
+                <TableCell
+                  style={{ border: "1px solid #2f334a", color: "white" }}
+                />
+                <TableCell
+                  style={{ border: "1px solid #2f334a", color: "white" }}
+                >
+                  Dessert (100g serving)
+                </TableCell>
+                <TableCell
+                  align="right"
+                  style={{ border: "1px solid #2f334a", color: "white" }}
+                >
+                  Calories
+                </TableCell>
+                <TableCell
+                  align="right"
+                  style={{ border: "1px solid #2f334a", color: "white" }}
+                >
+                  Fat&nbsp;(g)
+                </TableCell>
+                <TableCell
+                  align="right"
+                  style={{ border: "1px solid #2f334a", color: "white" }}
+                >
+                  Carbs&nbsp;(g)
+                </TableCell>
+                <TableCell
+                  align="right"
+                  style={{ border: "1px solid #2f334a", color: "white" }}
+                >
+                  Protein&nbsp;(g)
+                </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody style={{ backgroundColor: "#2f334a" }}>
               {rows.map((row) => (
                 <Row key={row.name} row={row} />
               ))}
