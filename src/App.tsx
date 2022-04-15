@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "../src/components/Navbar";
 import Home from "../src/components/Home";
 import Steps from "../src/components/Steps";
+import Calories from "../src/components/Calories";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -20,6 +21,11 @@ function App() {
             <Route path="/home">
               <body>
                 <Home />
+              </body>
+            </Route>
+            <Route path="/calories">
+              <body>
+                <Calories />
               </body>
             </Route>
           </Switch>

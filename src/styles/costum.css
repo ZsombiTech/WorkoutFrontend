@@ -66,6 +66,7 @@
 
 .flexbuttons2 {
   margin-top: 2vw;
+  text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -114,6 +115,11 @@
   border: 0.1rem solid #646982;
   border-radius: 1rem;
   padding: 1rem;
+}
+
+.profileshowtitle {
+  color: #bcbfd0;
+  font-size: 1.3rem;
 }
 
 .profileshowtasks {
