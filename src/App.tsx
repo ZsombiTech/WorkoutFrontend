@@ -4,6 +4,7 @@ import Navbar from "../src/components/Navbar";
 import Home from "../src/components/Home";
 import Steps from "../src/components/Steps";
 import Calories from "../src/components/Calories";
+import Table from "../src/components/Table";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -26,6 +27,11 @@ function App() {
             <Route path="/calories">
               <body>
                 <Calories />
+              </body>
+            </Route>
+            <Route path="/diet">
+              <body>
+                <Table />
               </body>
             </Route>
           </Switch>
