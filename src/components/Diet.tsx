@@ -4,6 +4,7 @@ import Table from "./Table";
 export default function Diet() {
   return (
     <div className="ran">
+      <h1 className="profiletitle">What I ate?</h1>
       <div className="profilebox5">
         <Table />
       </div>
@@ -26,15 +27,14 @@ export default function Diet() {
             placeholder="Calories"
             className="stepinput foodinput"
           />
+          <input
+            type="text"
+            placeholder="Amount"
+            className="stepinput foodinput"
+          />
           <button className="stepbutton">Add</button>
         </div>
         <br />
-      </div>
-      <div className="profilebox5">
-        <Table />
-      </div>
-      <div className="profilebox5">
-        <Table />
       </div>
     </div>
   );
