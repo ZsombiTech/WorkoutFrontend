@@ -82,18 +82,6 @@ function Row(props: { row: ReturnType<typeof createData> }) {
         >
           {row.fat}
         </TableCell>
-        <TableCell
-          align="right"
-          style={{ border: "1px solid #2f334a", color: "white" }}
-        >
-          {row.carbs}
-        </TableCell>
-        <TableCell
-          align="right"
-          style={{ border: "1px solid #2f334a", color: "white" }}
-        >
-          {row.protein}
-        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell
@@ -199,70 +187,52 @@ const rows = [
 
 export default function CollapsibleTable() {
   return (
-    <div className="ran">
-      <div className="profilebox5">
-        <TableContainer
-          component={Paper}
-          style={{ backgroundColor: "#2f334a", border: "1px solid #2f334a" }}
+    <TableContainer
+      component={Paper}
+      style={{ backgroundColor: "#2f334a", border: "1px solid #2f334a" }}
+    >
+      <Table
+        aria-label="collapsible table"
+        style={{ backgroundColor: "#2f334a", border: "1px solid #2f334a" }}
+      >
+        <TableHead
+          style={{
+            backgroundColor: "#2f334a",
+            border: "1px solid #2f334a",
+          }}
         >
-          <Table
-            aria-label="collapsible table"
-            style={{ backgroundColor: "#2f334a", border: "1px solid #2f334a" }}
+          <TableRow
+            style={{
+              backgroundColor: "#2f334a",
+              border: "1px solid #2f334a",
+            }}
           >
-            <TableHead
-              style={{
-                backgroundColor: "#2f334a",
-                border: "1px solid #2f334a",
-              }}
+            <TableCell
+              style={{ border: "1px solid #2f334a", color: "white" }}
+            />
+            <TableCell style={{ border: "1px solid #2f334a", color: "white" }}>
+              Food
+            </TableCell>
+            <TableCell
+              align="right"
+              style={{ border: "1px solid #2f334a", color: "white" }}
             >
-              <TableRow
-                style={{
-                  backgroundColor: "#2f334a",
-                  border: "1px solid #2f334a",
-                }}
-              >
-                <TableCell
-                  style={{ border: "1px solid #2f334a", color: "white" }}
-                />
-                <TableCell
-                  style={{ border: "1px solid #2f334a", color: "white" }}
-                >
-                  Dessert (100g serving)
-                </TableCell>
-                <TableCell
-                  align="right"
-                  style={{ border: "1px solid #2f334a", color: "white" }}
-                >
-                  Calories
-                </TableCell>
-                <TableCell
-                  align="right"
-                  style={{ border: "1px solid #2f334a", color: "white" }}
-                >
-                  Fat&nbsp;(g)
-                </TableCell>
-                <TableCell
-                  align="right"
-                  style={{ border: "1px solid #2f334a", color: "white" }}
-                >
-                  Carbs&nbsp;(g)
-                </TableCell>
-                <TableCell
-                  align="right"
-                  style={{ border: "1px solid #2f334a", color: "white" }}
-                >
-                  Protein&nbsp;(g)
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody style={{ backgroundColor: "#2f334a" }}>
-              {rows.map((row) => (
-                <Row key={row.name} row={row} />
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
-    </div>
+              Calories
+            </TableCell>
+            <TableCell
+              align="right"
+              style={{ border: "1px solid #2f334a", color: "white" }}
+            >
+              Amount
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody style={{ backgroundColor: "#2f334a" }}>
+          {rows.map((row) => (
+            <Row key={row.name} row={row} />
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
