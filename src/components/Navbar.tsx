@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { styled, useTheme, makeStyles } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -69,15 +69,19 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  const [opened, setOpened] = useState<boolean>(false);
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
+    setOpened(true);
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
+    setOpened(false);
   };
 
   return (
@@ -88,7 +92,7 @@ export default function PersistentDrawerLeft() {
         open={open}
         sx={{ backgroundColor: "#2b2e43", border: "none" }}
       >
-        <Toolbar>
+        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -98,6 +102,7 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
+          {!opened && <LogoutOutlinedIcon />}
         </Toolbar>
       </AppBar>
       <Drawer
