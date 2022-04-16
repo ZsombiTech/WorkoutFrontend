@@ -4,7 +4,7 @@ import Table from "./Table";
 export default function Diet() {
   return (
     <div className="ran">
-      <h1 className="profiletitle">What I ate?</h1>
+      <h1 className="profiletitle">What did I eat?</h1>
       <div className="profilebox5">
         <Table />
       </div>
