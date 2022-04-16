@@ -7,10 +7,8 @@ import Calories from "../src/components/Calories";
 import Diet from "../src/components/Diet";
 import Timer from "../src/components/Timer";
 import Login from "../src/components/Login";
+import Register from "../src/components/Register";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-const time = new Date();
-time.setSeconds(time.getSeconds() + 600);
 
 function App() {
   return (
@@ -22,7 +20,11 @@ function App() {
               <Login />
             </body>
           </Route>
-
+          <Route path="/register">
+            <body>
+              <Register />
+            </body>
+          </Route>
           <div style={{ marginTop: "5rem" }}>
             <Route path="/steps">
               <body>

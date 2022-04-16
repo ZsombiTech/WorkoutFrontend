@@ -196,12 +196,19 @@ input#email {
 input#password {
   color: white;
 }
+input#username {
+  color: white;
+}
 
 input#email::placeholder {
   color: white;
 }
 
 input#password::placeholder {
+  color: white;
+}
+
+input#username::placeholder {
   color: white;
 }
 
