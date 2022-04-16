@@ -38,11 +38,11 @@
 }
 
 .timertitle {
-  font-size: "10rem";
-  color: "white";
-  border: "0.5rem solid #2f334a";
-  padding: "0.5rem";
-  border-radius: "1rem";
+  font-size: 10rem;
+  color: white;
+  border: 0.5rem solid #2f334a;
+  padding: 0.5rem;
+  border-radius: 1rem;
 }
 
 .profiletitle {
@@ -210,6 +210,12 @@
   }
   .foodinput {
     margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .timertitle {
+    font-size: 5rem;
+  }
+  .marginbut {
     margin-bottom: 1rem;
   }
 }

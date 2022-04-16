@@ -1,4 +1,5 @@
 import { useTimer } from "react-timer-hook";
+import "../styles/costum.css";
 
 function MyTimer({ expiryTimestamp, autoStart }: any) {
   const {
@@ -19,16 +20,7 @@ function MyTimer({ expiryTimestamp, autoStart }: any) {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <div
-        style={{
-          fontSize: "10rem",
-          color: "white",
-          border: "0.5rem solid #2f334a",
-          padding: "0.5rem",
-          borderRadius: "1rem",
-        }}
-        className="timertitle"
-      >
+      <div className="timertitle">
         <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:
         <span>{seconds}</span>
       </div>
@@ -44,13 +36,13 @@ function MyTimer({ expiryTimestamp, autoStart }: any) {
       </p>
       <br />
       <div className="flexbuttons5">
-        <button onClick={start} className="stepbutton">
+        <button onClick={start} className="stepbutton marginbut">
           Start
         </button>
-        <button onClick={pause} className="stepbutton">
+        <button onClick={pause} className="stepbutton marginbut">
           Pause
         </button>
-        <button onClick={resume} className="stepbutton">
+        <button onClick={resume} className="stepbutton marginbut">
           Resume
         </button>
         <button
