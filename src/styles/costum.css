@@ -37,6 +37,14 @@
   align-content: center;
 }
 
+.timertitle {
+  font-size: "10rem";
+  color: "white";
+  border: "0.5rem solid #2f334a";
+  padding: "0.5rem";
+  border-radius: "1rem";
+}
+
 .profiletitle {
   font-family: Arial, Helvetica, sans-serif;
   color: white;

@@ -5,7 +5,11 @@ import Home from "../src/components/Home";
 import Steps from "../src/components/Steps";
 import Calories from "../src/components/Calories";
 import Diet from "../src/components/Diet";
+import Timer from "../src/components/Timer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+const time = new Date();
+time.setSeconds(time.getSeconds() + 600);
 
 function App() {
   return (
@@ -32,6 +36,11 @@ function App() {
             <Route path="/diet">
               <body>
                 <Diet />
+              </body>
+            </Route>
+            <Route path="/timer">
+              <body>
+                <Timer />
               </body>
             </Route>
           </Switch>
