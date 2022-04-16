@@ -197,6 +197,14 @@ input#password {
   color: white;
 }
 
+input#email::placeholder {
+  color: white;
+}
+
+input#password::placeholder {
+  color: white;
+}
+
 @media only screen and (max-width: 600px) {
   .pageflexbox {
     display: flex;

@@ -13,24 +13,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const theme = createTheme();
 
 export default function SignInSide() {
@@ -83,9 +65,12 @@ export default function SignInSide() {
               alignItems: "center",
             }}
           >
+            <br />
+            <br />
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
+            <br />
             <Typography component="h1" variant="h5" style={{ color: "white" }}>
               Sign in
             </Typography>
@@ -103,8 +88,8 @@ export default function SignInSide() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                style={{ color: "white" }}
                 autoFocus
+                sx={{ "& label": { color: "white" } }}
               />
               <TextField
                 margin="normal"
@@ -115,6 +100,7 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                sx={{ "& label": { color: "white" } }}
               />
 
               <Button
@@ -122,9 +108,12 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                style={{ backgroundColor: "8761E6" }}
               >
                 Sign In
               </Button>
+              <br />
+              <br />
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
@@ -137,7 +126,6 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
         </Grid>
