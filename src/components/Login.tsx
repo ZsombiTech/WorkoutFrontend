@@ -16,21 +16,20 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme();
 
 export default function SignInSide() {
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+
     console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+      email: email,
+      password: password,
     });
   };
 
-  const usernameInputChange = (event: any) => {
-    setUsername(event.target.value);
-    console.log(username);
+  const emailInputChange = (event: any) => {
+    setEmail(event.target.value);
   };
   const passwordInputChange = (event: any) => {
     setPassword(event.target.value);
@@ -99,8 +98,8 @@ export default function SignInSide() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                onChange={usernameInputChange}
-                value={username}
+                onChange={emailInputChange}
+                value={email}
                 autoFocus
                 sx={{ "& label": { color: "white" } }}
               />
