@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,6 +16,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme();
 
 export default function RegisterInSide() {
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -24,7 +28,15 @@ export default function RegisterInSide() {
       password: data.get("password"),
     });
   };
-
+  const nameInputChange = (event: any) => {
+    setName(event.target.value);
+  };
+  const emailInputChange = (event: any) => {
+    setEmail(event.target.value);
+  };
+  const passwordInputChange = (event: any) => {
+    setPassword(event.target.value);
+  };
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
@@ -87,6 +99,8 @@ export default function RegisterInSide() {
                 id="username"
                 label="Display Name"
                 name="username"
+                onChange={nameInputChange}
+                value={name}
                 autoComplete="username"
                 autoFocus
                 sx={{ "& label": { color: "white" } }}
@@ -99,6 +113,8 @@ export default function RegisterInSide() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={emailInputChange}
+                value={email}
                 autoFocus
                 sx={{ "& label": { color: "white" } }}
               />
@@ -108,6 +124,8 @@ export default function RegisterInSide() {
                 fullWidth
                 name="password"
                 label="Password"
+                onChange={passwordInputChange}
+                value={password}
                 type="password"
                 id="password"
                 autoComplete="current-password"
