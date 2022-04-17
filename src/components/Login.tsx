@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,6 +16,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme();
 
 export default function SignInSide() {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -23,6 +26,14 @@ export default function SignInSide() {
       email: data.get("email"),
       password: data.get("password"),
     });
+  };
+
+  const usernameInputChange = (event: any) => {
+    setUsername(event.target.value);
+    console.log(username);
+  };
+  const passwordInputChange = (event: any) => {
+    setPassword(event.target.value);
   };
 
   return (
@@ -88,6 +99,8 @@ export default function SignInSide() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={usernameInputChange}
+                value={username}
                 autoFocus
                 sx={{ "& label": { color: "white" } }}
               />
@@ -98,6 +111,8 @@ export default function SignInSide() {
                 name="password"
                 label="Password"
                 type="password"
+                onChange={passwordInputChange}
+                value={password}
                 id="password"
                 autoComplete="current-password"
                 sx={{ "& label": { color: "white" } }}
