@@ -11,11 +11,14 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
 export default function SignInSide() {
+  const history = useHistory();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [blank, setBlank] = useState<boolean>(true);
@@ -30,20 +33,17 @@ export default function SignInSide() {
     if (!blank) {
       axios
         .post("http://shababackend.herokuapp.com/auth/login", {
-          username: username,
+          email: email,
           password: password,
         })
         .then(
           (response) => {
             if (response.data.response == "correct") {
               localStorage.setItem("token", response.data.token);
-              localStorage.setItem("username", username);
+              localStorage.setItem("email", email);
               history.push("/mainpage");
-              props.setLoggedIn(true);
-              props.loggedInn.current = true;
             } else {
-              setMessage(response.data.response);
-              togglePopTrue();
+              //setMessage(response.data.response);
             }
           },
           (error) => {
