@@ -18,14 +18,38 @@ const theme = createTheme();
 export default function SignInSide() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [blank, setBlank] = useState<boolean>(true);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    console.log({
-      email: email,
-      password: password,
-    });
+      if (email != "" || password != "") {
+      event.preventDefault();
+      setBlank(false);
+    } else {
+      setBlank(true);
+    }
+    if (!blank) {
+      axios
+        .post("http://shababackend.herokuapp.com/auth/login", {
+          username: username,
+          password: password,
+        })
+        .then(
+          (response) => {
+            if (response.data.response == "correct") {
+              localStorage.setItem("token", response.data.token);
+              localStorage.setItem("username", username);
+              history.push("/mainpage");
+              props.setLoggedIn(true);
+              props.loggedInn.current = true;
+            } else {
+              setMessage(response.data.response);
+              togglePopTrue();
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
   };
 
   const emailInputChange = (event: any) => {
