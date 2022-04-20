@@ -17,7 +17,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
-export default function SignInSide() {
+export default function SignInSide(props: any) {
   const history = useHistory();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -42,6 +42,7 @@ export default function SignInSide() {
               localStorage.setItem("token", response.data.token);
               localStorage.setItem("displayName", response.data.displayName);
               localStorage.setItem("email", email);
+              props.setLogged(true);
               history.push("/home");
             } else {
               //setMessage(response.data.response);

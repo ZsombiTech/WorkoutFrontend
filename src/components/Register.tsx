@@ -17,7 +17,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
-export default function RegisterInSide() {
+export default function RegisterInSide(props: any) {
   const history = useHistory();
 
   const [name, setName] = useState<string>("");
@@ -46,6 +46,7 @@ export default function RegisterInSide() {
               localStorage.setItem("token", response.data.token);
               localStorage.setItem("displayname", name);
               localStorage.setItem("email", email);
+              props.setLogged(true);
               history.push("/home");
             } else {
               //setMessage(response.data.response);

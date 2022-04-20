@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Navbar from "../src/components/Navbar";
 import Home from "../src/components/Home";
@@ -11,48 +11,44 @@ import Register from "../src/components/Register";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
+  const [logged, setLogged] = useState<boolean>(false);
+
   return (
     <Router>
       <Switch>
         <div className="App">
+          {logged && <Navbar />}
           <Route path="/login">
             <body>
-              <Login />
+              <Login setLogged={setLogged} />
             </body>
           </Route>
           <Route path="/register">
             <body>
-              <Register />
+              <Register setLogged={setLogged} />
             </body>
           </Route>
           <div style={{ marginTop: "5rem" }}>
             <Route path="/steps">
-              <body>
-                <Navbar />
-                <Steps />
-              </body>
+              <body>{logged ? <Steps /> : <h1>d</h1>}</body>
             </Route>
             <Route path="/home">
               <body>
-                <Navbar />
                 <Home />
               </body>
             </Route>
             <Route path="/calories">
               <body>
-                <Navbar />
                 <Calories />
               </body>
             </Route>
             <Route path="/diet">
               <body>
-                <Navbar />
                 <Diet />
               </body>
             </Route>
             <Route path="/timer">
               <body>
-                <Navbar />
                 <Timer />
               </body>
             </Route>
