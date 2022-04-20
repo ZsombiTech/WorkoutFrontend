@@ -86,6 +86,9 @@ export default function PersistentDrawerLeft() {
   };
 
   const handleLogOut = () => {
+    localStorage.removeItem("displayName");
+    localStorage.removeItem("email");
+    localStorage.removeItem("token");
     history.push("/login");
   };
 

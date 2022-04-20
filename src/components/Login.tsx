@@ -40,6 +40,7 @@ export default function SignInSide() {
           (response) => {
             if (response.data.response == "correct") {
               localStorage.setItem("token", response.data.token);
+              localStorage.setItem("displayName", response.data.displayName);
               localStorage.setItem("email", email);
               history.push("/home");
             } else {
