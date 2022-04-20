@@ -13,7 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ListItemText from "@mui/material/ListItemText";
 
 const drawerWidth = 240;
@@ -69,10 +69,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  const history = useHistory();
   const [opened, setOpened] = useState<boolean>(false);
 
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -82,6 +83,10 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
     setOpened(false);
+  };
+
+  const handleLogOut = () => {
+    history.push("/login");
   };
 
   return (
@@ -102,7 +107,7 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          {!opened && <LogoutOutlinedIcon />}
+          {!opened && <LogoutOutlinedIcon onClick={handleLogOut} />}
         </Toolbar>
       </AppBar>
       <Drawer

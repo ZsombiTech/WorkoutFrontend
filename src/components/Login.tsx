@@ -24,7 +24,7 @@ export default function SignInSide() {
   const [blank, setBlank] = useState<boolean>(true);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-      if (email != "" || password != "") {
+    if (email != "" || password != "") {
       event.preventDefault();
       setBlank(false);
     } else {
@@ -32,7 +32,7 @@ export default function SignInSide() {
     }
     if (!blank) {
       axios
-        .post("http://shababackend.herokuapp.com/auth/login", {
+        .post("http://localhost:8000/auth/login", {
           email: email,
           password: password,
         })
@@ -41,7 +41,7 @@ export default function SignInSide() {
             if (response.data.response == "correct") {
               localStorage.setItem("token", response.data.token);
               localStorage.setItem("email", email);
-              history.push("/mainpage");
+              history.push("/home");
             } else {
               //setMessage(response.data.response);
             }
@@ -50,6 +50,7 @@ export default function SignInSide() {
             console.log(error);
           }
         );
+    }
   };
 
   const emailInputChange = (event: any) => {

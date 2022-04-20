@@ -12,22 +12,50 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
 export default function RegisterInSide() {
+  const history = useHistory();
+
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [blank, setBlank] = useState<boolean>(true);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log({
-      name: name,
-      email: email,
-      password: password,
-    });
+    if (name != "" || email != "" || password != "") {
+      event.preventDefault();
+      setBlank(false);
+    } else {
+      setBlank(true);
+    }
+
+    if (!blank) {
+      axios
+        .post("http://localhost:8000/auth/register", {
+          username: name,
+          email: email,
+          password: password,
+        })
+        .then(
+          (response) => {
+            if (response.data.response == "correct") {
+              localStorage.setItem("token", response.data.token);
+              localStorage.setItem("displayname", name);
+              localStorage.setItem("email", email);
+              history.push("/home");
+            } else {
+              //setMessage(response.data.response);
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
   };
   const nameInputChange = (event: any) => {
     setName(event.target.value);
