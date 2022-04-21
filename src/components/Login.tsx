@@ -24,10 +24,15 @@ export default function SignInSide(props: any) {
   const [password, setPassword] = useState<string>("");
   const [blank, setBlank] = useState<boolean>(true);
   const [messagepop, setMessagepop] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("Incorrect password");
+  const [message, setMessage] = useState<string>(
+    "Please enter a valid email address or password"
+  );
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (email.trim() != "" || password.trim() != "") {
+    if (
+      email.trim().replace(/\s+/g, "") != "" ||
+      password.trim().replace(/\s+/g, "") != ""
+    ) {
       event.preventDefault();
       setBlank(false);
     } else {
@@ -53,7 +58,7 @@ export default function SignInSide(props: any) {
               history.push("/home");
             } else {
               setMessagepop(true);
-              console.log(messagepop);
+              setMessage(response.data.response);
             }
           },
           (error) => {
