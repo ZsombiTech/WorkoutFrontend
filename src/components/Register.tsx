@@ -13,6 +13,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import PopUp from "./PopUp";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
@@ -24,13 +25,24 @@ export default function RegisterInSide(props: any) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [blank, setBlank] = useState<boolean>(true);
+  const [messagepop, setMessagepop] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>(
+    "Please enter a valid email address or password"
+  );
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (name != "" || email != "" || password != "") {
+    if (
+      name.trim().replace(/\s+/g, "") != "" ||
+      email.trim().replace(/\s+/g, "") != "" ||
+      password.trim().replace(/\s+/g, "") != ""
+    ) {
       event.preventDefault();
       setBlank(false);
     } else {
+      event.preventDefault();
       setBlank(true);
+      setMessagepop(true);
+      setMessage("Please enter a valid name, email address or password");
     }
 
     if (!blank) {
@@ -50,7 +62,8 @@ export default function RegisterInSide(props: any) {
               props.setLogged(true);
               history.push("/home");
             } else {
-              //setMessage(response.data.response);
+              setMessagepop(true);
+              setMessage(response.data.response);
             }
           },
           (error) => {
@@ -70,6 +83,9 @@ export default function RegisterInSide(props: any) {
   };
   return (
     <ThemeProvider theme={theme}>
+      {messagepop && (
+        <PopUp open={messagepop} setOpen={setMessagepop} text={message} />
+      )}
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
