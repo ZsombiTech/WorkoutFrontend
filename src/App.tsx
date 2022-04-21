@@ -10,6 +10,7 @@ import Login from "../src/components/Login";
 import Register from "../src/components/Register";
 import Error from "../src/components/404";
 import axios from "axios";
+import "reactjs-popup/dist/index.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {

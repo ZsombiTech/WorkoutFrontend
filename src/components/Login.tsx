@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import PopUp from "./PopUp";
 import { useHistory } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -22,13 +23,18 @@ export default function SignInSide(props: any) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [blank, setBlank] = useState<boolean>(true);
+  const [messagepop, setMessagepop] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("Incorrect password");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (email != "" || password != "") {
+    if (email.trim() != "" || password.trim() != "") {
       event.preventDefault();
       setBlank(false);
     } else {
+      event.preventDefault();
       setBlank(true);
+      setMessagepop(true);
+      setMessage("Please enter a valid email address or password");
     }
     if (!blank) {
       axios
@@ -46,7 +52,8 @@ export default function SignInSide(props: any) {
               props.setLogged(true);
               history.push("/home");
             } else {
-              //setMessage(response.data.response);
+              setMessagepop(true);
+              console.log(messagepop);
             }
           },
           (error) => {
@@ -65,6 +72,9 @@ export default function SignInSide(props: any) {
 
   return (
     <ThemeProvider theme={theme}>
+      {messagepop && (
+        <PopUp open={messagepop} setOpen={setMessagepop} text={message} />
+      )}
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
