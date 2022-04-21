@@ -44,8 +44,9 @@ export default function RegisterInSide(props: any) {
           (response) => {
             if (response.data.response == "correct") {
               localStorage.setItem("token", response.data.token);
-              localStorage.setItem("displayname", name);
+              localStorage.setItem("displayName", name);
               localStorage.setItem("email", email);
+              localStorage.setItem("logged", "true");
               props.setLogged(true);
               history.push("/home");
             } else {

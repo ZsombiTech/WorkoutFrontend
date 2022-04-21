@@ -1,7 +1,7 @@
 {
   "name": "workoutfrontend",
   "version": "0.1.0",
-  "homepage": "http://localhost:3000/Home",
+  "homepage": "http://localhost:3000/login",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",

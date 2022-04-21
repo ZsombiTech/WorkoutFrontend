@@ -68,7 +68,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props: any) {
   const history = useHistory();
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -86,9 +86,13 @@ export default function PersistentDrawerLeft() {
   };
 
   const handleLogOut = () => {
+    localStorage.removeItem("displayname");
     localStorage.removeItem("displayName");
     localStorage.removeItem("email");
     localStorage.removeItem("token");
+    localStorage.removeItem("logged");
+    props.setLogged(false);
+
     history.push("/login");
   };
 

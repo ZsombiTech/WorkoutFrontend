@@ -42,6 +42,7 @@ export default function SignInSide(props: any) {
               localStorage.setItem("token", response.data.token);
               localStorage.setItem("displayName", response.data.displayName);
               localStorage.setItem("email", email);
+              localStorage.setItem("logged", "true");
               props.setLogged(true);
               history.push("/home");
             } else {
