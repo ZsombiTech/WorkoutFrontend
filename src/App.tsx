@@ -37,39 +37,54 @@ function App() {
   return (
     <Router>
       <Switch>
-        <div className="App">
-          {logged && <Navbar setLogged={setLogged} />}
-          <Route path="/login">
-            <body>
-              <Login setLogged={setLogged} />
-            </body>
-          </Route>
-          <Route path="/register">
-            <body>
-              <Register setLogged={setLogged} />
-            </body>
-          </Route>
+        <Route exact path="/login">
+          <body>
+            <Login setLogged={setLogged} />
+          </body>
+        </Route>
+        <Route exact path="/register">
+          <body>
+            <Register setLogged={setLogged} />
+          </body>
+        </Route>
+        <Route exact path="/steps">
           <div style={{ marginTop: "5rem" }}>
-            <Route path="/steps">
-              <body>{logged ? <Steps /> : <Error />}</body>
-            </Route>
-            <Route path="/home">
-              <body>{logged ? <Home /> : <Error />}</body>
-            </Route>
-            <Route path="/calories">
-              <body>{logged ? <Calories /> : <Error />}</body>
-            </Route>
-            <Route path="/diet">
-              <body>{logged ? <Diet /> : <Error />}</body>
-            </Route>
-            <Route path="/timer">
-              <body>
-                {logged ? <Timer /> : <Error />}
-                <Timer />
-              </body>
-            </Route>
+            {logged && <Navbar setLogged={setLogged} />}
+            <body>{logged ? <Steps /> : <Error />}</body>
           </div>
-        </div>
+        </Route>
+        <Route exact path="/home">
+          <div style={{ marginTop: "5rem" }}>
+            {logged && <Navbar setLogged={setLogged} />}
+            <body>{logged ? <Home /> : <Error />}</body>
+          </div>
+        </Route>
+        <Route exact path="/calories">
+          <div style={{ marginTop: "5rem" }}>
+            {logged && <Navbar setLogged={setLogged} />}
+            <body>{logged ? <Calories /> : <Error />}</body>
+          </div>
+        </Route>
+        <Route exact path="/diet">
+          <div style={{ marginTop: "5rem" }}>
+            {logged && <Navbar setLogged={setLogged} />}
+            <body>{logged ? <Diet /> : <Error />}</body>
+          </div>
+        </Route>
+        <Route exact path="/timer">
+          <div style={{ marginTop: "5rem" }}>
+            {logged && <Navbar setLogged={setLogged} />}
+            <body>
+              {logged ? <Timer /> : <Error />}
+              <Timer />
+            </body>
+          </div>
+        </Route>
+        <Route>
+          <body>
+            <Error />
+          </body>
+        </Route>
       </Switch>
     </Router>
   );
