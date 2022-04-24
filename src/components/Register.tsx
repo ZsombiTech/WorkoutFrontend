@@ -42,7 +42,7 @@ export default function RegisterInSide(props: any) {
       event.preventDefault();
       setBlank(true);
       setMessagepop(true);
-      setMessage("Please enter a valid name, email address or password");
+      setMessage("Please enter a valid name, email address or password!");
     }
 
     if (!blank) {

@@ -222,6 +222,9 @@ input#username::placeholder {
   padding: 2vw;
 }
 
+
+
+
 @media only screen and (max-width: 600px) {
   .pageflexbox {
     display: flex;
