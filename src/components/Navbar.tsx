@@ -9,6 +9,7 @@ import List from "@mui/material/List";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
+import PersonIcon from "@mui/icons-material/Person";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -114,7 +115,10 @@ export default function PersistentDrawerLeft(props: any) {
           >
             <MenuIcon />
           </IconButton>
-          {!opened && <LogoutOutlinedIcon onClick={handleLogOut} />}
+          <div>
+            {!opened && <PersonIcon style={{ marginRight: "30px" }} />}
+            {!opened && <LogoutOutlinedIcon onClick={handleLogOut} />}
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
