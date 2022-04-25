@@ -1,7 +1,11 @@
 import * as React from "react";
 import "../styles/costum.css";
 
-export default function ProfileSection() {
+export default function ProfileSection(props: any) {
+  const handleShow = () => {
+    props.setShow(!props.show);
+  };
+
   return (
     <>
       <div className="profilebox">
@@ -28,7 +32,9 @@ export default function ProfileSection() {
         </div>
         <hr />
         <div className="profileflexbox2">
-          <button className="profileshowtasks">Show tasks</button>
+          <button className="profileshowtasks" onClick={handleShow}>
+            Show tasks
+          </button>
           <button className="profileshowall">All</button>
           <div className="profileshowadd">
             <p>Add tasks</p>
