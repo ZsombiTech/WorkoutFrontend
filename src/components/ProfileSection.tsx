@@ -4,6 +4,8 @@ import "../styles/costum.css";
 export default function ProfileSection(props: any) {
   const handleShow = () => {
     props.setShow(!props.show);
+    props.setFirst(!props.first);
+    props.setSecond(!props.second);
   };
 
   return (

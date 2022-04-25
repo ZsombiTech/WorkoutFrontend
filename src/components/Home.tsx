@@ -12,7 +12,12 @@ export default function Home() {
   return (
     <>
       <div className="pageflexbox">
-        <ProfileSection setShow={setShow} show={show} />
+        <ProfileSection
+          setShow={setShow}
+          show={show}
+          setSecond={setSecond}
+          setFirst={setFirst}
+        />
         <HomeStats />
       </div>
       <Tasks
