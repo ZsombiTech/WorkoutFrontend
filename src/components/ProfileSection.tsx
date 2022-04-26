@@ -1,5 +1,6 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/costum.css";
+import axios from "axios";
 
 export default function ProfileSection(props: any) {
   const handleShow = () => {
@@ -7,6 +8,15 @@ export default function ProfileSection(props: any) {
     props.setFirst(!props.first);
     props.setSecond(!props.second);
   };
+
+  useEffect(() => {
+    const userid = localStorage.getItem("user_id");
+    axios
+      .get(`http://localhost:8000/getProfileData/:${userid}`)
+      .then((response) => {
+        console.log(response);
+      });
+  });
 
   return (
     <>
