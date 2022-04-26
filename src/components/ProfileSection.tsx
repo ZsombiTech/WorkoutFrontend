@@ -3,6 +3,8 @@ import "../styles/costum.css";
 import axios from "axios";
 
 export default function ProfileSection(props: any) {
+  const [followers, setFollowers] = useState<number>(0);
+
   const handleShow = () => {
     props.setShow(!props.show);
     props.setFirst(!props.first);
@@ -14,7 +16,7 @@ export default function ProfileSection(props: any) {
     axios
       .get(`http://localhost:8000/getProfileData/:${userid}`)
       .then((response) => {
-        console.log(response);
+        setFollowers(response.data.followers);
       });
   });
 
@@ -38,7 +40,7 @@ export default function ProfileSection(props: any) {
                 className="profilesubmitbutton"
                 value="Profile"
               />
-              <div className="profilesubmitbutton2">{`Followers ${2}`}</div>
+              <div className="profilesubmitbutton2">{`Followers ${followers}`}</div>
             </div>
           </div>
         </div>
