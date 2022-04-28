@@ -4,9 +4,13 @@ import "../styles/costum3.css";
 export default function Task(props: any) {
   return (
     <>
-      <div className="flex border-2 border-white">
-        <p>The task</p>
-        <button>Done</button>
+      <div className="flex justify-between border-2 border-white p-5 items-center inditask mb-5">
+        <p className="ml-10 text-lg text-white inditasktext">
+          The task sfeifjkwef ejfhqejf wefhbewfb b ehfb
+        </p>
+        <button className="mr-10 text-lg text-white bg-coolpurple p-3 pl-4 pr-4 rounded-xl inditaskbutton">
+          Done
+        </button>
       </div>
     </>
   );

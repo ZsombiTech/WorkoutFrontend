@@ -17,14 +17,14 @@
 .taskscontainertext {
   font-family: Arial, Helvetica, sans-serif;
   color: #646982;
-  margin-left: 70rem;
+  margin-left: 66.5rem;
   margin-top: -1rem;
 }
 
 .taskscontainertext2 {
   font-family: Arial, Helvetica, sans-serif;
   color: #646982;
-  margin-left: 66.7rem;
+  margin-left: 65rem;
   margin-top: -1rem;
 }
 
@@ -34,9 +34,20 @@
     margin-left: 0;
   }
   .taskscontainertext {
-    margin-left: 60%;
+    margin-left: 48%;
   }
   .taskscontainertext2 {
-    margin-left: 40%;
+    margin-left: 36%;
+  }
+  .inditask {
+    max-width: 15rem;
+    flex-direction: column;
+  }
+  .inditasktext {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+  .inditaskbutton {
+    margin-right: 0;
   }
 }
