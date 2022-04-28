@@ -1,5 +1,6 @@
 import react, { useState } from "react";
 import "../styles/costum3.css";
+import Task from "./Task";
 
 export default function Tasks(props: any) {
   const handleFirst = () => {
@@ -22,6 +23,7 @@ export default function Tasks(props: any) {
                   Close
                 </h3>
               </div>
+              <Task />
             </div>
           )}
           {props.second && (
