@@ -1,8 +1,15 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import "../styles/costum3.css";
+import axios from "axios";
 import Task from "./Task";
 
+interface Taskint {
+  id: number;
+  description: string;
+}
+
 export default function Tasks(props: any) {
+  const [list, setList] = useState<Array<Taskint>>();
   const handleFirst = () => {
     props.setFirst(!props.first);
   };
@@ -10,6 +17,12 @@ export default function Tasks(props: any) {
   const handleSecond = () => {
     props.setSecond(!props.second);
   };
+  useEffect(() => {
+    const username = localStorage.getItem("username");
+    axios.get(`http://localhost:8000/gettask/${username}`).then((response) => {
+      setList(response.data[0].tasks);
+    });
+  }, []);
 
   return (
     <>
@@ -23,9 +36,11 @@ export default function Tasks(props: any) {
                   Close
                 </h3>
               </div>
-              <Task />
-              <Task />
-              <Task />
+              {list &&
+                list.length > 0 &&
+                list.map((element, index) => (
+                  <Task key={index} description={element.description} />
+                ))}
             </div>
           )}
           {props.second && (
