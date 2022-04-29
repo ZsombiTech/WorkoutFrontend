@@ -6,10 +6,12 @@ import Task from "./Task";
 interface Taskint {
   id: number;
   description: string;
+  completed: boolean;
 }
 
 export default function Tasks(props: any) {
-  const [list, setList] = useState<Array<Taskint>>();
+  const [progress, setProgress] = useState<Array<Taskint>>();
+  const [completed, setCompleted] = useState<Array<Taskint>>();
   const handleFirst = () => {
     props.setFirst(!props.first);
   };
@@ -20,7 +22,16 @@ export default function Tasks(props: any) {
   useEffect(() => {
     const username = localStorage.getItem("username");
     axios.get(`http://localhost:8000/gettask/${username}`).then((response) => {
-      setList(response.data[0].tasks);
+      setProgress(
+        response.data[0].tasks.filter(
+          (task: Taskint) => task.completed === false
+        )
+      );
+      setCompleted(
+        response.data[0].tasks.filter(
+          (task: Taskint) => task.completed === true
+        )
+      );
     });
   }, []);
 
@@ -36,10 +47,14 @@ export default function Tasks(props: any) {
                   Close
                 </h3>
               </div>
-              {list &&
-                list.length > 0 &&
-                list.map((element, index) => (
-                  <Task key={index} description={element.description} />
+              {progress &&
+                progress.length > 0 &&
+                progress.map((element, index) => (
+                  <Task
+                    key={index}
+                    description={element.description}
+                    completed={false}
+                  />
                 ))}
             </div>
           )}
@@ -51,6 +66,15 @@ export default function Tasks(props: any) {
                   Close
                 </h3>
               </div>
+              {completed &&
+                completed.length > 0 &&
+                completed.map((element, index) => (
+                  <Task
+                    key={index}
+                    description={element.description}
+                    completed={true}
+                  />
+                ))}
             </div>
           )}
         </>

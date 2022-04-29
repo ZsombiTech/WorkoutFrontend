@@ -8,9 +8,11 @@ export default function Task(props: any) {
         <p className="ml-10 text-lg text-white inditasktext">
           {props.description}
         </p>
-        <button className="mr-10 text-lg text-white bg-coolpurple p-3 pl-4 pr-4 rounded-xl inditaskbutton">
-          Done
-        </button>
+        {!props.completed && (
+          <button className="mr-10 text-lg text-white bg-coolpurple p-3 pl-4 pr-4 rounded-xl inditaskbutton">
+            Done
+          </button>
+        )}
       </div>
     </>
   );
