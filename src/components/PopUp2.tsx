@@ -9,6 +9,22 @@ function PopUpp(props: any) {
   const closeModal = () => {
     props.setOpen(false);
   };
+  const changeText = (event: any) => {
+    setText(event.target.value);
+  };
+
+  const onSubmit = () => {
+    const username = localStorage.getItem("username");
+    const data = {
+      username: username,
+      description: text,
+    };
+    axios.post("http://localhost:8000/addtask", data).then((response) => {
+      console.log(response);
+    });
+    setText("");
+    closeModal();
+  };
 
   return (
     <Popup
@@ -26,8 +42,18 @@ function PopUpp(props: any) {
         </a>
         <h1 className="text-center text-lg text-white mb-3">Add new task</h1>
         <div className="flex justify-center">
-          <input type="text" className="w-20 rounded-lg mr-5" />
-          <button className="bg-coolpurple rounded-lg p-1 px-2">ADD</button>
+          <input
+            type="text"
+            className="w-20 rounded-lg mr-5"
+            value={text}
+            onChange={changeText}
+          />
+          <button
+            className="bg-coolpurple rounded-lg p-1 px-2 text-white"
+            onClick={onSubmit}
+          >
+            ADD
+          </button>
         </div>
       </div>
     </Popup>
