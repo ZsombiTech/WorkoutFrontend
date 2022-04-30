@@ -5,11 +5,16 @@ import PopUp2 from "./PopUp2";
 
 export default function ProfileSection(props: any) {
   const [followers, setFollowers] = useState<number>(0);
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleShow = () => {
     props.setShow(!props.show);
     props.setFirst(!props.first);
     props.setSecond(!props.second);
+  };
+
+  const handleAdd = () => {
+    setOpen(true);
   };
 
   useEffect(() => {
@@ -51,9 +56,10 @@ export default function ProfileSection(props: any) {
             Show tasks
           </button>
           <button className="profileshowall">All</button>
-          <div className="profileshowadd">
+          <div className="profileshowadd" onClick={handleAdd}>
             <p>Add tasks</p>
           </div>
+          <PopUp2 open={open} setOpen={setOpen} />
         </div>
       </div>
     </>

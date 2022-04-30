@@ -28,6 +28,11 @@
   margin-top: -1rem;
 }
 
+.popup-content {
+  background-color: #2f334a !important;
+  border-radius: 1rem !important;
+}
+
 @media only screen and (max-width: 600px) {
   .taskscontainer {
     width: 100%;
