@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/costum.css";
 import axios from "axios";
+import PopUp2 from "./PopUp2";
 
 export default function ProfileSection(props: any) {
   const [followers, setFollowers] = useState<number>(0);

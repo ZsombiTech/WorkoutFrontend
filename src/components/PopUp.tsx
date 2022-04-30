@@ -3,7 +3,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "../styles/costum.css";
 
-function App(props: any) {
+function PopUp(props: any) {
   const [open, setOpen] = useState<boolean>(false);
   const closeModal = () => props.setOpen(false);
   return (
@@ -18,4 +18,4 @@ function App(props: any) {
   );
 }
 
-export default App;
+export default PopUp;
