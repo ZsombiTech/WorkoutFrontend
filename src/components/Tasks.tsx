@@ -33,7 +33,7 @@ export default function Tasks(props: any) {
         )
       );
     });
-  }, []);
+  }, [completed, progress]);
 
   return (
     <>
@@ -54,8 +54,13 @@ export default function Tasks(props: any) {
                     key={index}
                     description={element.description}
                     completed={false}
+                    setProgress={setProgress}
+                    setCompleted={setCompleted}
                   />
                 ))}
+              {progress && progress.length == 0 && (
+                <p className="text-xl text-white">No tasks to show</p>
+              )}
             </div>
           )}
           {props.second && (
@@ -73,8 +78,13 @@ export default function Tasks(props: any) {
                     key={index}
                     description={element.description}
                     completed={true}
+                    setProgress={setProgress}
+                    setCompleted={setCompleted}
                   />
                 ))}
+              {completed && completed.length == 0 && (
+                <p className="text-xl text-white">No tasks to show</p>
+              )}
             </div>
           )}
         </>
