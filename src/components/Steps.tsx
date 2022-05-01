@@ -6,6 +6,7 @@ export default function Steps() {
   const [daily, setDaily] = useState<any>();
   const [message, setMessage] = useState<string>("");
   const [exist, setExist] = useState<boolean>(false);
+  const [stepcount, setStepCount] = useState<string>();
 
   useEffect(() => {
     const username = localStorage.getItem("displayName");
@@ -19,6 +20,18 @@ export default function Steps() {
       }
     });
   }, []);
+
+  const handleAddStep = () => {
+    const username = localStorage.getItem("displayName");
+    const data = { username: username, stepcount: stepcount };
+    axios.post("http://localhost:8000/addsteps", data).then((response) => {
+      console.log("juhe");
+    });
+  };
+
+  const handlechange = (event: any) => {
+    setStepCount(event.target.value);
+  };
   return (
     <>
       <div className="ran">
@@ -33,8 +46,7 @@ export default function Steps() {
           <div className="profileflexbox5">
             <button className="profileshowtasks5">Daily</button>
             <div className="profileshowadd5">
-              {}
-              <p>{daily}</p>
+              {exist ? message : <p>{daily}</p>}
             </div>
           </div>
           <div className="profileflexbox5">
@@ -63,8 +75,12 @@ export default function Steps() {
               type="text"
               placeholder="Steps today"
               className="stepinput"
+              value={stepcount}
+              onChange={handlechange}
             />
-            <button className="stepbutton">Add</button>
+            <button className="stepbutton" onClick={handleAddStep}>
+              Add
+            </button>
           </div>
           <br />
         </div>
