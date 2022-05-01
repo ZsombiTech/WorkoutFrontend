@@ -20,7 +20,7 @@ export default function Tasks(props: any) {
     props.setSecond(!props.second);
   };
   useEffect(() => {
-    const username = localStorage.getItem("username");
+    const username = localStorage.getItem("displayName");
     axios.get(`http://localhost:8000/gettask/${username}`).then((response) => {
       setProgress(
         response.data[0].tasks.filter(

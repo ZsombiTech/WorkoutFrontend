@@ -1,7 +1,24 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/costum.css";
+import axios from "axios";
 
 export default function Steps() {
+  const [daily, setDaily] = useState<any>();
+  const [message, setMessage] = useState<string>("");
+  const [exist, setExist] = useState<boolean>(false);
+
+  useEffect(() => {
+    const username = localStorage.getItem("displayName");
+    const data = { username: username };
+    axios.post("http://localhost:8000/getsteps", data).then((response) => {
+      if (response.data == "no") {
+        setExist(true);
+        setMessage("No data");
+      } else {
+        setDaily(response.data.stepcount);
+      }
+    });
+  }, []);
   return (
     <>
       <div className="ran">
@@ -16,7 +33,8 @@ export default function Steps() {
           <div className="profileflexbox5">
             <button className="profileshowtasks5">Daily</button>
             <div className="profileshowadd5">
-              <p>18</p>
+              {}
+              <p>{daily}</p>
             </div>
           </div>
           <div className="profileflexbox5">

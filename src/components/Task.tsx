@@ -10,7 +10,7 @@ interface Taskint {
 
 export default function Task(props: any) {
   const handleDone = () => {
-    const username = localStorage.getItem("username");
+    const username = localStorage.getItem("displayName");
     axios.delete("http://localhost:8000/deletetask", {
       data: { description: props.description, username: username },
     });
