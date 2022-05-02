@@ -6,6 +6,7 @@ module.exports = {
       white: "#ffffff",
       coolpurple: "#8761E6",
       cooldark: "#2f334a",
+      coollightdark: "#646982",
     },
   },
   plugins: [],
