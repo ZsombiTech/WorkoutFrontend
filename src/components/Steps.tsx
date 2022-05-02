@@ -6,7 +6,9 @@ export default function Steps() {
   const [daily, setDaily] = useState<any>();
   const [message, setMessage] = useState<string>("");
   const [exist, setExist] = useState<boolean>(false);
-  const [stepcount, setStepCount] = useState<string>();
+  const [stepcount, setStepCount] = useState<number>();
+  const [average, setAverage] = useState<number>();
+  const [overall, setOverall] = useState<number>();
 
   useEffect(() => {
     const username = localStorage.getItem("displayName");
@@ -17,6 +19,22 @@ export default function Steps() {
         setMessage("No data");
       } else {
         setDaily(response.data.stepcount);
+      }
+    });
+    axios.post("http://localhost:8000/getavg", data).then((response) => {
+      if (response.data == "no") {
+        setExist(true);
+        setMessage("No data");
+      } else {
+        setAverage(Math.round(response.data));
+      }
+    });
+    axios.post("http://localhost:8000/getoverall", data).then((response) => {
+      if (response.data == "no") {
+        setExist(true);
+        setMessage("No data");
+      } else {
+        setOverall(Math.round(response.data));
       }
     });
   }, []);
@@ -50,15 +68,15 @@ export default function Steps() {
             </div>
           </div>
           <div className="profileflexbox5">
-            <button className="profileshowtasks5">Weekly</button>
+            <button className="profileshowtasks5">Average</button>
             <div className="profileshowadd5">
-              <p>18</p>
+              {exist ? message : <p>{average}</p>}
             </div>
           </div>
           <div className="profileflexbox5">
-            <button className="profileshowtasks5">Monthy</button>
+            <button className="profileshowtasks5">Overall</button>
             <div className="profileshowadd5">
-              <p>18</p>
+              {exist ? message : <p>{overall}</p>}
             </div>
           </div>
         </div>
