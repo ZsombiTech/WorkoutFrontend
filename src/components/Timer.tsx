@@ -49,7 +49,7 @@ function MyTimer({ expiryTimestamp, autoStart }: any) {
           onClick={() => {
             // Restarts to 5 minutes timer
             const time = new Date();
-            time.setSeconds(time.getSeconds() + 300);
+            time.setSeconds(time.getSeconds() + 600);
             restart(time);
             pause();
           }}
