@@ -75,10 +75,7 @@ function App() {
         <Route exact path="/timer">
           <div style={{ marginTop: "5rem" }}>
             {logged && <Navbar setLogged={setLogged} />}
-            <body>
-              {logged ? <Timer /> : <Error />}
-              <Timer />
-            </body>
+            <body>{logged ? <Timer /> : <Error />}</body>
           </div>
         </Route>
         <Route>

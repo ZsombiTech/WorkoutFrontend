@@ -14,7 +14,7 @@ function PopUpp(props: any) {
   };
 
   const onSubmit = () => {
-    const username = localStorage.getItem("username");
+    const username = localStorage.getItem("displayName");
     const data = {
       username: username,
       description: text,
