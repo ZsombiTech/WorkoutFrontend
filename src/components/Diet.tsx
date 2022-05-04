@@ -9,9 +9,16 @@ export default function Diet() {
 
   const handleAdd = () => {
     const username = localStorage.getItem("displayName");
-    const addfood = {};
+    const addfood = {
+      username: username,
+      foodname: name,
+      calories: calories,
+      amount: amount,
+    };
 
-    axios.post("http://localhost:8000/addtable");
+    axios.post("http://localhost:8000/addtable", addfood).then((response) => {
+      console.log(response);
+    });
   };
 
   const handleName = (event: any) => {
@@ -62,7 +69,9 @@ export default function Diet() {
             value={amount}
             onChange={handleAmount}
           />
-          <button className="stepbutton">Add</button>
+          <button className="stepbutton" onClick={handleAdd}>
+            Add
+          </button>
         </div>
         <br />
       </div>
