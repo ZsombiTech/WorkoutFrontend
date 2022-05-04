@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import axios from "axios";
 
 function createData(name: string, calories: number, fat: number, date: string) {
   return {
@@ -68,6 +69,15 @@ const rows = [
 ];
 
 export default function CollapsibleTable() {
+  useEffect(() => {
+    const username = localStorage.getItem("displayName");
+    axios
+      .get(`http://localhost:8000/gettable/:${username}`)
+      .then((response) => {
+        console.log(response);
+      });
+  }, []);
+
   return (
     <TableContainer
       component={Paper}
