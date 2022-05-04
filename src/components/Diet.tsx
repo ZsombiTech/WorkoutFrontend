@@ -1,7 +1,31 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Table from "./Table";
+import axios from "axios";
 
 export default function Diet() {
+  const [name, setName] = useState<string>();
+  const [calories, setCalories] = useState<number>();
+  const [amount, setAmount] = useState<number>();
+
+  const handleAdd = () => {
+    const username = localStorage.getItem("displayName");
+    const addfood = {};
+
+    axios.post("http://localhost:8000/addtable");
+  };
+
+  const handleName = (event: any) => {
+    setName(event.target.value);
+  };
+
+  const handleCalories = (event: any) => {
+    setCalories(event.target.value);
+  };
+
+  const handleAmount = (event: any) => {
+    setAmount(event.target.value);
+  };
+
   return (
     <div className="ran">
       <h1 className="profiletitle">What did I eat?</h1>
@@ -21,16 +45,22 @@ export default function Diet() {
             type="text"
             placeholder="Food name"
             className="stepinput foodinput"
+            value={name}
+            onChange={handleName}
           />
           <input
             type="text"
             placeholder="Calories"
             className="stepinput foodinput"
+            value={calories}
+            onChange={handleCalories}
           />
           <input
             type="text"
             placeholder="Amount"
             className="stepinput foodinput"
+            value={amount}
+            onChange={handleAmount}
           />
           <button className="stepbutton">Add</button>
         </div>
