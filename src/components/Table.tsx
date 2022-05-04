@@ -13,11 +13,12 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-function createData(name: string, calories: number, fat: number) {
+function createData(name: string, calories: number, fat: number, date: string) {
   return {
     name,
     calories,
     fat,
+    date,
   };
 }
 
@@ -50,17 +51,20 @@ function Row(props: { row: ReturnType<typeof createData> }) {
         >
           {row.fat}
         </TableCell>
+        <TableCell
+          align="right"
+          style={{ border: "1px solid #2f334a", color: "white" }}
+        >
+          {row.date}
+        </TableCell>
       </TableRow>
     </React.Fragment>
   );
 }
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0),
-  createData("Ice cream sandwich", 237, 9.0),
-  createData("Eclair", 262, 16.0),
-  createData("Cupcake", 305, 3.7),
-  createData("Gingerbread", 356, 16.0),
+  createData("Frozen yoghurt", 159, 6.0, "2022-08-16"),
+  createData("Ice cream sandwich", 237, 9.0, "2022-08-18"),
 ];
 
 export default function CollapsibleTable() {
@@ -102,6 +106,12 @@ export default function CollapsibleTable() {
               style={{ border: "1px solid #2f334a", color: "white" }}
             >
               Amount
+            </TableCell>
+            <TableCell
+              align="right"
+              style={{ border: "1px solid #2f334a", color: "white" }}
+            >
+              Date
             </TableCell>
           </TableRow>
         </TableHead>
