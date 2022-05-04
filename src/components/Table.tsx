@@ -13,33 +13,11 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-  price: number
-) {
+function createData(name: string, calories: number, fat: number) {
   return {
     name,
     calories,
     fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      {
-        date: "2020-01-05",
-        customerId: "11091700",
-        amount: 3,
-      },
-      {
-        date: "2020-01-02",
-        customerId: "Anonymous",
-        amount: 1,
-      },
-    ],
   };
 }
 
@@ -49,20 +27,10 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 
   return (
     <React.Fragment>
-      <TableRow
-        sx={{ "& > *": { borderBottom: "unset" } }}
-        style={{ border: "1px solid #2f334a", color: "white" }}
-      >
-        <TableCell style={{ border: "1px solid #2f334a", color: "white" }}>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-            style={{ color: "white" }}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
+      <TableRow style={{ border: "1px solid #2f334a", color: "white" }}>
+        <TableCell
+          style={{ border: "1px solid #2f334a", color: "white" }}
+        ></TableCell>
         <TableCell
           component="th"
           scope="row"
@@ -83,106 +51,16 @@ function Row(props: { row: ReturnType<typeof createData> }) {
           {row.fat}
         </TableCell>
       </TableRow>
-      <TableRow>
-        <TableCell
-          style={{
-            paddingBottom: 0,
-            paddingTop: 0,
-            border: "1px solid #2f334a",
-          }}
-          colSpan={6}
-        >
-          <Collapse
-            in={open}
-            timeout="auto"
-            unmountOnExit
-            style={{ border: "1px solid #2f334a" }}
-          >
-            <Box sx={{ margin: 1 }} style={{ border: "1px solid #2f334a" }}>
-              <Typography
-                variant="h6"
-                gutterBottom
-                component="div"
-                style={{ color: "white" }}
-              >
-                History
-              </Typography>
-              <Table
-                size="small"
-                aria-label="purchases"
-                style={{ border: "1px solid #2f334a" }}
-              >
-                <TableHead>
-                  <TableRow>
-                    <TableCell
-                      style={{ border: "1px solid #2f334a", color: "white" }}
-                    >
-                      Date
-                    </TableCell>
-                    <TableCell
-                      style={{ border: "1px solid #2f334a", color: "white" }}
-                    >
-                      Customer
-                    </TableCell>
-                    <TableCell
-                      align="right"
-                      style={{ border: "1px solid #2f334a", color: "white" }}
-                    >
-                      Amount
-                    </TableCell>
-                    <TableCell
-                      align="right"
-                      style={{ border: "1px solid #2f334a", color: "white" }}
-                    >
-                      Total price ($)
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        style={{ border: "1px solid #2f334a", color: "white" }}
-                      >
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell
-                        style={{ border: "1px solid #2f334a", color: "white" }}
-                      >
-                        {historyRow.customerId}
-                      </TableCell>
-                      <TableCell
-                        align="right"
-                        style={{ border: "1px solid #2f334a", color: "white" }}
-                      >
-                        {historyRow.amount}
-                      </TableCell>
-                      <TableCell
-                        align="right"
-                        style={{ border: "1px solid #2f334a", color: "white" }}
-                      >
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
     </React.Fragment>
   );
 }
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0, 3.99),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3, 4.99),
-  createData("Eclair", 262, 16.0, 24, 6.0, 3.79),
-  createData("Cupcake", 305, 3.7, 67, 4.3, 2.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
+  createData("Frozen yoghurt", 159, 6.0),
+  createData("Ice cream sandwich", 237, 9.0),
+  createData("Eclair", 262, 16.0),
+  createData("Cupcake", 305, 3.7),
+  createData("Gingerbread", 356, 16.0),
 ];
 
 export default function CollapsibleTable() {
