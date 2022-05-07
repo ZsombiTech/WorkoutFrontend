@@ -87,6 +87,8 @@ export default function CollapsibleTable(done: any) {
       });
   }, []);
 
+  console.log(foodlist);
+
   return (
     <TableContainer
       component={Paper}
@@ -150,7 +152,7 @@ export default function CollapsibleTable(done: any) {
         <TableBody style={{ backgroundColor: "#2f334a", textAlign: "center" }}>
           {foodlist &&
             foodlist.map((food, key) => <Row key={key} food={food} />)}
-          {!foodlist && (
+          {foodlist && foodlist.length == 0 && (
             <div className="flex flex-column justify-center text-center">
               <h2
                 className="text-center text-white "
