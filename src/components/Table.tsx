@@ -14,17 +14,22 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import axios from "axios";
 
-function createData(name: string, calories: number, fat: number, date: string) {
+function createData(
+  foodname: string,
+  calories: number,
+  amount: number,
+  date: string
+) {
   return {
-    name,
+    foodname,
     calories,
-    fat,
+    amount,
     date,
   };
 }
 
-function Row(props: { row: ReturnType<typeof createData> }) {
-  const { row } = props;
+function Row(props: { food: ReturnType<typeof createData> }) {
+  const { food } = props;
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -38,43 +43,47 @@ function Row(props: { row: ReturnType<typeof createData> }) {
           scope="row"
           style={{ border: "1px solid #2f334a", color: "white" }}
         >
-          {row.name}
+          {food.foodname}
         </TableCell>
         <TableCell
           align="right"
           style={{ border: "1px solid #2f334a", color: "white" }}
         >
-          {row.calories}
+          {food.calories}
         </TableCell>
         <TableCell
           align="right"
           style={{ border: "1px solid #2f334a", color: "white" }}
         >
-          {row.fat}
+          {food.amount}
         </TableCell>
         <TableCell
           align="right"
           style={{ border: "1px solid #2f334a", color: "white" }}
         >
-          {row.date}
+          {food.date}
         </TableCell>
       </TableRow>
     </React.Fragment>
   );
 }
 
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, "2022-08-16"),
-  createData("Ice cream sandwich", 237, 9.0, "2022-08-18"),
-];
+interface foodface {
+  amount: number;
+  calories: number;
+  foodname: string;
+  date: string;
+}
 
-export default function CollapsibleTable() {
+export default function CollapsibleTable(done: any) {
+  const [foodlist, setFoodList] = useState<Array<foodface>>();
+
   useEffect(() => {
     const username = localStorage.getItem("displayName");
     axios
       .get(`http://localhost:8000/gettable/:${username}`)
       .then((response) => {
-        console.log(response);
+        setFoodList(response.data[0].food);
       });
   }, []);
 
@@ -126,9 +135,8 @@ export default function CollapsibleTable() {
           </TableRow>
         </TableHead>
         <TableBody style={{ backgroundColor: "#2f334a" }}>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
+          {foodlist &&
+            foodlist.map((food, key) => <Row key={key} food={food} />)}
         </TableBody>
       </Table>
     </TableContainer>
