@@ -90,11 +90,24 @@ export default function CollapsibleTable(done: any) {
   return (
     <TableContainer
       component={Paper}
-      style={{ backgroundColor: "#2f334a", border: "1px solid #2f334a" }}
+      style={{
+        backgroundColor: "#2f334a",
+        border: "1px solid #2f334a",
+        textAlign: "center",
+      }}
     >
       <Table
         aria-label="collapsible table"
-        style={{ backgroundColor: "#2f334a", border: "1px solid #2f334a" }}
+        style={
+          foodlist
+            ? { backgroundColor: "#2f334a", border: "1px solid #2f334a" }
+            : {
+                backgroundColor: "#2f334a",
+                border: "1px solid #2f334a",
+                justifyContent: "center",
+                textAlign: "center",
+              }
+        }
       >
         <TableHead
           style={{
@@ -134,9 +147,19 @@ export default function CollapsibleTable(done: any) {
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody style={{ backgroundColor: "#2f334a" }}>
+        <TableBody style={{ backgroundColor: "#2f334a", textAlign: "center" }}>
           {foodlist &&
             foodlist.map((food, key) => <Row key={key} food={food} />)}
+          {!foodlist && (
+            <div className="flex flex-column justify-center text-center">
+              <h2
+                className="text-center text-white "
+                style={{ textAlign: "center" }}
+              >
+                No data to show
+              </h2>
+            </div>
+          )}
         </TableBody>
       </Table>
     </TableContainer>

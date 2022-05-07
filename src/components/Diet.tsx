@@ -17,8 +17,9 @@ export default function Diet() {
     };
 
     axios.post("http://localhost:8000/addtable", addfood).then((response) => {
-      console.log(response);
+      window.location.reload();
     });
+    window.location.reload();
   };
 
   const handleName = (event: any) => {

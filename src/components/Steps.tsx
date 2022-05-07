@@ -45,6 +45,7 @@ export default function Steps() {
     axios.post("http://localhost:8000/addsteps", data).then((response) => {
       console.log("juhe");
     });
+    window.location.reload();
   };
 
   const handlechange = (event: any) => {

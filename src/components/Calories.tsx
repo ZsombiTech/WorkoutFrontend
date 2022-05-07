@@ -47,6 +47,7 @@ export default function Calories() {
     axios.post("http://localhost:8000/addcalories", data).then((response) => {
       console.log("juhe");
     });
+    window.location.reload();
   };
 
   const handlePageDirect = () => {
