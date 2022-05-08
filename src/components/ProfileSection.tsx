@@ -6,6 +6,7 @@ import PopUp2 from "./PopUp2";
 export default function ProfileSection(props: any) {
   const [followers, setFollowers] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("");
 
   const handleShow = () => {
     props.setShow(!props.show);
@@ -19,11 +20,15 @@ export default function ProfileSection(props: any) {
 
   useEffect(() => {
     const userid = localStorage.getItem("user_id");
+    const username = localStorage.getItem("displayName");
     axios
       .get(`http://localhost:8000/getProfileData/:${userid}`)
       .then((response) => {
         setFollowers(response.data.followers);
       });
+    if (username) {
+      setUsername(username);
+    }
   });
 
   return (
@@ -38,7 +43,7 @@ export default function ProfileSection(props: any) {
             />
           </div>
           <div className="profiletext">
-            <h1 className="profiletitle">Username</h1>
+            <h1 className="profiletitle">{username}</h1>
             <h3 className="profiledescripton">Desc</h3>
             <div className="flexbuttons">
               <input

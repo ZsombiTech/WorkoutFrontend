@@ -9,6 +9,7 @@ import Timer from "../src/components/Timer";
 import Login from "../src/components/Login";
 import Register from "../src/components/Register";
 import Error from "../src/components/404";
+import ProfilePage from "../src/components/ProfilePage";
 import axios from "axios";
 import "reactjs-popup/dist/index.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -76,6 +77,12 @@ function App() {
           <div style={{ marginTop: "5rem" }}>
             {logged && <Navbar setLogged={setLogged} />}
             <body>{logged ? <Timer /> : <Error />}</body>
+          </div>
+        </Route>
+        <Route exact path="/profilepage">
+          <div style={{ marginTop: "5rem" }}>
+            {logged && <Navbar setLogged={setLogged} />}
+            <body>{logged ? <ProfilePage /> : <Error />}</body>
           </div>
         </Route>
         <Route>
