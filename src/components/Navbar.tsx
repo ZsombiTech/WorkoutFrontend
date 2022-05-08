@@ -116,7 +116,11 @@ export default function PersistentDrawerLeft(props: any) {
             <MenuIcon />
           </IconButton>
           <div>
-            {!opened && <PersonIcon style={{ marginRight: "30px" }} />}
+            {!opened && (
+              <Link to="/profilepage">
+                <PersonIcon style={{ marginRight: "30px" }} />
+              </Link>
+            )}
             {!opened && <LogoutOutlinedIcon onClick={handleLogOut} />}
           </div>
         </Toolbar>

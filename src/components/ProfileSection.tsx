@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/costum.css";
 import axios from "axios";
 import PopUp2 from "./PopUp2";
+import { Link } from "react-router-dom";
 
 export default function ProfileSection(props: any) {
   const [followers, setFollowers] = useState<number>(0);
@@ -46,11 +47,14 @@ export default function ProfileSection(props: any) {
             <h1 className="profiletitle">{username}</h1>
             <h3 className="profiledescripton">Desc</h3>
             <div className="flexbuttons">
-              <input
-                type="submit"
-                className="profilesubmitbutton"
-                value="Profile"
-              />
+              <Link to="/profilepage">
+                <input
+                  type="submit"
+                  className="profilesubmitbutton"
+                  value="Profile"
+                />
+              </Link>
+
               <div className="profilesubmitbutton2">{`Followers ${followers}`}</div>
             </div>
           </div>
