@@ -1,6 +1,7 @@
 import react, { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
+import axios from "axios";
 
 export default function ProfilePage() {
   const [username, setUsername] = useState<string>("");
@@ -93,13 +94,20 @@ export default function ProfilePage() {
 
                   <div className="text-sm leading-normal mt-0 mb-2 text-white font-bold uppercase ">
                     <i className="fas fa-map-marker-alt mr-2 text-lg text-white"></i>
-                    Location
                     {locwant ? (
-                      <>
-                        <button className="ml-3 bg-coolotherpurple p-2 rounded-lg">
-                          Save location
-                        </button>
-                      </>
+                      <input
+                        type="text"
+                        className="py-2 rounded-lg bg-coollightdark border-white color-white mb-4 px-1"
+                        placeholder="Enter New Location"
+                      />
+                    ) : (
+                      <>Location</>
+                    )}
+
+                    {locwant ? (
+                      <button className="ml-3 bg-coolotherpurple p-2 rounded-lg">
+                        Save location
+                      </button>
                     ) : (
                       <button
                         className="ml-3 bg-coolotherpurple p-2 rounded-lg"
@@ -111,17 +119,32 @@ export default function ProfilePage() {
                   </div>
                 </div>
                 <div className="mt-10 py-10 border-t border-white text-center">
-                  <div className="flex flex-wrap justify-center">
-                    <div className="w-full lg:w-9/12 px-4">
-                      <p className="mb-4 text-lg leading-relaxed text-white">
-                        Long
-                      </p>
+                  <div
+                    className={descwant ? "" : "flex flex-wrap justify-center"}
+                  >
+                    <div
+                      className={
+                        descwant ? "flex flex-col " : "w-full lg:w-9/12 px-4"
+                      }
+                    >
                       {descwant ? (
-                        <>
-                          <button className="bg-coolotherpurple text-white p-2 rounded-lg">
-                            Save Description
-                          </button>
-                        </>
+                        <textarea
+                          className="py-2 rounded-lg bg-coollightdark border-white color-white mb-10"
+                          placeholder="Enter New Location"
+                          rows={4}
+                          cols={50}
+                          style={{ color: "white" }}
+                        ></textarea>
+                      ) : (
+                        <p className="mb-4 text-lg leading-relaxed text-white">
+                          Long
+                        </p>
+                      )}
+
+                      {descwant ? (
+                        <button className="bg-coolotherpurple text-white p-2 rounded-lg">
+                          Save Description
+                        </button>
                       ) : (
                         <button
                           className="bg-coolotherpurple text-white p-2 rounded-lg"
