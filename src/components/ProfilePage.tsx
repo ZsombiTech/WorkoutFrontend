@@ -7,14 +7,21 @@ export default function ProfilePage() {
   const [username, setUsername] = useState<string>("");
   const [location, setLocation] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const [locatione, setLocatione] = useState<string>("");
+  const [descriptione, setDescriptione] = useState<string>("");
   const [locwant, setLocWant] = useState<boolean>(false);
   const [descwant, setDescWant] = useState<boolean>(false);
 
   useEffect(() => {
-    const usernamee = localStorage.getItem("displayName");
-    if (usernamee) {
-      setUsername(usernamee);
-    }
+    const userid = localStorage.getItem("user_id");
+
+    axios
+      .get(`http://localhost:8000/getProfileData/:${userid}`)
+      .then((response) => {
+        setUsername(response.data.username);
+        setLocatione(response.data.location);
+        setDescriptione(response.data.description);
+      });
   }, []);
 
   function stringToColor(string: string) {
@@ -101,7 +108,7 @@ export default function ProfilePage() {
                         placeholder="Enter New Location"
                       />
                     ) : (
-                      <>Location</>
+                      <>{locatione}</>
                     )}
 
                     {locwant ? (
@@ -130,14 +137,14 @@ export default function ProfilePage() {
                       {descwant ? (
                         <textarea
                           className="py-2 rounded-lg bg-coollightdark border-white color-white mb-10"
-                          placeholder="Enter New Location"
+                          placeholder="Edit description"
                           rows={4}
                           cols={50}
                           style={{ color: "white" }}
                         ></textarea>
                       ) : (
                         <p className="mb-4 text-lg leading-relaxed text-white">
-                          Long
+                          {descriptione}
                         </p>
                       )}
 
