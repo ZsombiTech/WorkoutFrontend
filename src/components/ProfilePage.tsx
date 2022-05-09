@@ -70,6 +70,18 @@ export default function ProfilePage() {
     setDescWant(!descwant);
   };
 
+  const submitLoc = () => {
+    axios.post("http://localhost:8000/getProfileData").then((response) => {
+      setUsername(response.data.username);
+      setLocatione(response.data.location);
+      setDescriptione(response.data.description);
+    });
+  };
+
+  const submitDesc = () => {
+    setDescWant(!descwant);
+  };
+
   return (
     <>
       <main className="profile-page">
@@ -106,13 +118,18 @@ export default function ProfilePage() {
                         type="text"
                         className="py-2 rounded-lg bg-coollightdark border-white color-white mb-4 px-1"
                         placeholder="Enter New Location"
+                        value={location}
+                        onChange={setLoc}
                       />
                     ) : (
                       <>{locatione}</>
                     )}
 
                     {locwant ? (
-                      <button className="ml-3 bg-coolotherpurple p-2 rounded-lg">
+                      <button
+                        className="ml-3 bg-coolotherpurple p-2 rounded-lg"
+                        onClick={submitLoc}
+                      >
                         Save location
                       </button>
                     ) : (
@@ -141,6 +158,8 @@ export default function ProfilePage() {
                           rows={4}
                           cols={50}
                           style={{ color: "white" }}
+                          value={description}
+                          onChange={setDesc}
                         ></textarea>
                       ) : (
                         <p className="mb-4 text-lg leading-relaxed text-white">
@@ -149,7 +168,10 @@ export default function ProfilePage() {
                       )}
 
                       {descwant ? (
-                        <button className="bg-coolotherpurple text-white p-2 rounded-lg">
+                        <button
+                          className="bg-coolotherpurple text-white p-2 rounded-lg"
+                          onClick={submitDesc}
+                        >
                           Save Description
                         </button>
                       ) : (
