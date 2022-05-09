@@ -22,7 +22,7 @@ export default function ProfilePage() {
         setLocatione(response.data.location);
         setDescriptione(response.data.description);
       });
-  }, []);
+  }, [locwant, descwant]);
 
   function stringToColor(string: string) {
     let hash = 0;
@@ -71,15 +71,31 @@ export default function ProfilePage() {
   };
 
   const submitLoc = () => {
-    axios.post("http://localhost:8000/getProfileData").then((response) => {
-      setUsername(response.data.username);
-      setLocatione(response.data.location);
-      setDescriptione(response.data.description);
+    const userid = localStorage.getItem("user_id");
+    const locati = location;
+
+    const data = {
+      id: userid,
+      location: locati,
+    };
+
+    axios.post("http://localhost:8000/setloc", data).then((response) => {
+      setLocw();
     });
   };
 
   const submitDesc = () => {
-    setDescWant(!descwant);
+    const userid = localStorage.getItem("user_id");
+    const desci = description;
+
+    const data = {
+      id: userid,
+      description: desci,
+    };
+
+    axios.post("http://localhost:8000/setdesc", data).then((response) => {
+      setDescw();
+    });
   };
 
   return (
