@@ -4,6 +4,8 @@ import Stack from "@mui/material/Stack";
 
 export default function ProfilePage() {
   const [username, setUsername] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
 
   useEffect(() => {
     const usernamee = localStorage.getItem("displayName");
