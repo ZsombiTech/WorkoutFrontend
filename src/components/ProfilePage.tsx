@@ -54,6 +54,14 @@ export default function ProfilePage() {
     setDescription(event.target.value);
   };
 
+  const setLocw = () => {
+    setLocWant(!locwant);
+  };
+
+  const setDescw = () => {
+    setDescWant(!descwant);
+  };
+
   return (
     <>
       <main className="profile-page">
@@ -86,9 +94,20 @@ export default function ProfilePage() {
                   <div className="text-sm leading-normal mt-0 mb-2 text-white font-bold uppercase ">
                     <i className="fas fa-map-marker-alt mr-2 text-lg text-white"></i>
                     Location
-                    <button className="ml-3 bg-coolotherpurple p-2 rounded-lg">
-                      Change location
-                    </button>
+                    {locwant ? (
+                      <>
+                        <button className="ml-3 bg-coolotherpurple p-2 rounded-lg">
+                          Save location
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className="ml-3 bg-coolotherpurple p-2 rounded-lg"
+                        onClick={setLocw}
+                      >
+                        Change location
+                      </button>
+                    )}
                   </div>
                 </div>
                 <div className="mt-10 py-10 border-t border-white text-center">
@@ -97,9 +116,20 @@ export default function ProfilePage() {
                       <p className="mb-4 text-lg leading-relaxed text-white">
                         Long
                       </p>
-                      <button className="bg-coolotherpurple text-white p-2 rounded-lg">
-                        Change Description
-                      </button>
+                      {descwant ? (
+                        <>
+                          <button className="bg-coolotherpurple text-white p-2 rounded-lg">
+                            Save Description
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          className="bg-coolotherpurple text-white p-2 rounded-lg"
+                          onClick={setDescw}
+                        >
+                          Change Description
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
