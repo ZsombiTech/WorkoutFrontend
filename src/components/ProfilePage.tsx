@@ -43,6 +43,15 @@ export default function ProfilePage() {
       children: `${name.split(" ")[0][0]}`,
     };
   }
+
+  const setLoc = (event: any) => {
+    setLocation(event.target.value);
+  };
+
+  const setDesc = (event: any) => {
+    setDescription(event.target.value);
+  };
+
   return (
     <>
       <main className="profile-page">
