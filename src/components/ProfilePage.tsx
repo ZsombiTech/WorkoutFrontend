@@ -6,6 +6,8 @@ export default function ProfilePage() {
   const [username, setUsername] = useState<string>("");
   const [location, setLocation] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const [locwant, setLocWant] = useState<boolean>(false);
+  const [descwant, setDescWant] = useState<boolean>(false);
 
   useEffect(() => {
     const usernamee = localStorage.getItem("displayName");
