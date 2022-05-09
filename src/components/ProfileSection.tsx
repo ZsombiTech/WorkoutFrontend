@@ -5,7 +5,7 @@ import PopUp2 from "./PopUp2";
 import { Link } from "react-router-dom";
 
 export default function ProfileSection(props: any) {
-  const [followers, setFollowers] = useState<number>(0);
+  const [location, setLocation] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
 
@@ -25,7 +25,7 @@ export default function ProfileSection(props: any) {
     axios
       .get(`http://localhost:8000/getProfileData/:${userid}`)
       .then((response) => {
-        setFollowers(response.data.followers);
+        setLocation(response.data.location);
       });
     if (username) {
       setUsername(username);
@@ -55,7 +55,7 @@ export default function ProfileSection(props: any) {
                 />
               </Link>
 
-              <div className="profilesubmitbutton2">{`Followers ${followers}`}</div>
+              <div className="profilesubmitbutton2">{`Location ${location}`}</div>
             </div>
           </div>
         </div>
