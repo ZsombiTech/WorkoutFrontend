@@ -59,7 +59,7 @@ export default function ProfileSection(props: any) {
             </div>
           </div>
         </div>
-        <hr />
+        <hr className="text-white" />
         <div className="profileflexbox2">
           <button className="profileshowtasks" onClick={handleShow}>
             Show tasks

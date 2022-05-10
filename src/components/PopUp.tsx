@@ -9,10 +9,10 @@ function PopUp(props: any) {
   return (
     <div>
       <Popup open={props.open} closeOnDocumentClick onClose={closeModal}>
-        <a className="closepopup" onClick={closeModal}>
+        <a className="closepopup text-white" onClick={closeModal}>
           &times;
         </a>
-        <div className="popupmodal">{props.text}</div>
+        <div className="popupmodal text-white">{props.text}</div>
       </Popup>
     </div>
   );
