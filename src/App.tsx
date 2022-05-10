@@ -27,7 +27,10 @@ function App() {
     axios.post("http://localhost:8000/auth/verify", {}, config).then(
       (res) => {
         if (res.data.response === "Good") {
-          setLogged(true);
+          if (logged != true) {
+            setLogged(true);
+          }
+          console.log("run");
         }
       },
       (error) => {

@@ -17,7 +17,7 @@ export default function ProfilePage() {
     const config = {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
-    console.log(config);
+
     axios
       .get(`http://localhost:8000/getProfileData/:${userid}`, config)
       .then((response) => {

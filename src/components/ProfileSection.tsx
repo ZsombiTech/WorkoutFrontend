@@ -67,7 +67,9 @@ export default function ProfileSection(props: any) {
           <button className="profileshowtasks" onClick={handleShow}>
             Show tasks
           </button>
-          <button className="profileshowall">All</button>
+          <button className="profileshowall" onClick={handleShow}>
+            All
+          </button>
           <div className="profileshowadd" onClick={handleAdd}>
             <p>Add tasks</p>
           </div>
