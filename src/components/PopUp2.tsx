@@ -19,9 +19,14 @@ function PopUpp(props: any) {
       username: username,
       description: text,
     };
-    axios.post("http://localhost:8000/addtask", data).then((response) => {
-      console.log(response);
-    });
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+    axios
+      .post("http://localhost:8000/addtask", data, config)
+      .then((response) => {
+        console.log(response);
+      });
     setText("");
     closeModal();
   };

@@ -16,7 +16,10 @@ export default function HomeStats() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:8000/getrandom").then((response) => {
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+    axios.get("http://localhost:8000/getrandom", config).then((response) => {
       setActivity(response.data);
     });
   }, []);

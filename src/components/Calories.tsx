@@ -15,38 +15,52 @@ export default function Calories() {
   useEffect(() => {
     const username = localStorage.getItem("displayName");
     const data = { username: username };
-    axios.post("http://localhost:8000/getcalories", data).then((response) => {
-      if (response.data == "no") {
-        setExist(true);
-        setMessage("No data");
-      } else {
-        setDaily(response.data.calorie);
-      }
-    });
-    axios.post("http://localhost:8000/getavgcal", data).then((response) => {
-      if (response.data == "no") {
-        setExist(true);
-        setMessage("No data");
-      } else {
-        setAverage(Math.round(response.data));
-      }
-    });
-    axios.post("http://localhost:8000/getoverallcal", data).then((response) => {
-      if (response.data == "no") {
-        setExist(true);
-        setMessage("No data");
-      } else {
-        setOverall(Math.round(response.data));
-      }
-    });
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+    axios
+      .post("http://localhost:8000/getcalories", data, config)
+      .then((response) => {
+        if (response.data == "no") {
+          setExist(true);
+          setMessage("No data");
+        } else {
+          setDaily(response.data.calorie);
+        }
+      });
+    axios
+      .post("http://localhost:8000/getavgcal", data, config)
+      .then((response) => {
+        if (response.data == "no") {
+          setExist(true);
+          setMessage("No data");
+        } else {
+          setAverage(Math.round(response.data));
+        }
+      });
+    axios
+      .post("http://localhost:8000/getoverallcal", data, config)
+      .then((response) => {
+        if (response.data == "no") {
+          setExist(true);
+          setMessage("No data");
+        } else {
+          setOverall(Math.round(response.data));
+        }
+      });
   }, []);
 
   const handleAddCalorie = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
     const username = localStorage.getItem("displayName");
     const data = { username: username, calories: calories };
-    axios.post("http://localhost:8000/addcalories", data).then((response) => {
-      console.log("juhe");
-    });
+    axios
+      .post("http://localhost:8000/addcalories", data, config)
+      .then((response) => {
+        console.log("juhe");
+      });
     window.location.reload();
   };
 

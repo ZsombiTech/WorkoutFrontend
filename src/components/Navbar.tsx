@@ -92,6 +92,7 @@ export default function PersistentDrawerLeft(props: any) {
     localStorage.removeItem("email");
     localStorage.removeItem("token");
     localStorage.removeItem("logged");
+    localStorage.removeItem("user_id");
     props.setLogged(false);
 
     history.push("/login");

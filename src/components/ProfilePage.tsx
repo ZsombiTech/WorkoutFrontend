@@ -14,9 +14,12 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const userid = localStorage.getItem("user_id");
-
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+    console.log(config);
     axios
-      .get(`http://localhost:8000/getProfileData/:${userid}`)
+      .get(`http://localhost:8000/getProfileData/:${userid}`, config)
       .then((response) => {
         setUsername(response.data.username);
         setLocatione(response.data.location);
@@ -78,10 +81,15 @@ export default function ProfilePage() {
       id: userid,
       location: locati,
     };
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
 
-    axios.post("http://localhost:8000/setloc", data).then((response) => {
-      setLocw();
-    });
+    axios
+      .post("http://localhost:8000/setloc", data, config)
+      .then((response) => {
+        setLocw();
+      });
   };
 
   const submitDesc = () => {
@@ -92,10 +100,15 @@ export default function ProfilePage() {
       id: userid,
       description: desci,
     };
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
 
-    axios.post("http://localhost:8000/setdesc", data).then((response) => {
-      setDescw();
-    });
+    axios
+      .post("http://localhost:8000/setdesc", data, config)
+      .then((response) => {
+        setDescw();
+      });
   };
 
   return (

@@ -22,8 +22,11 @@ export default function ProfileSection(props: any) {
   useEffect(() => {
     const userid = localStorage.getItem("user_id");
     const username = localStorage.getItem("displayName");
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
     axios
-      .get(`http://localhost:8000/getProfileData/:${userid}`)
+      .get(`http://localhost:8000/getProfileData/:${userid}`, config)
       .then((response) => {
         setLocation(response.data.location);
       });

@@ -21,18 +21,23 @@ export default function Tasks(props: any) {
   };
   useEffect(() => {
     const username = localStorage.getItem("displayName");
-    axios.get(`http://localhost:8000/gettask/${username}`).then((response) => {
-      setProgress(
-        response.data[0].tasks.filter(
-          (task: Taskint) => task.completed === false
-        )
-      );
-      setCompleted(
-        response.data[0].tasks.filter(
-          (task: Taskint) => task.completed === true
-        )
-      );
-    });
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+    axios
+      .get(`http://localhost:8000/gettask/${username}`, config)
+      .then((response) => {
+        setProgress(
+          response.data[0].tasks.filter(
+            (task: Taskint) => task.completed === false
+          )
+        );
+        setCompleted(
+          response.data[0].tasks.filter(
+            (task: Taskint) => task.completed === true
+          )
+        );
+      });
   }, [completed, progress]);
 
   return (

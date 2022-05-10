@@ -16,9 +16,15 @@ export default function Diet() {
       amount: amount,
     };
 
-    axios.post("http://localhost:8000/addtable", addfood).then((response) => {
-      window.location.reload();
-    });
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+
+    axios
+      .post("http://localhost:8000/addtable", addfood, config)
+      .then((response) => {
+        window.location.reload();
+      });
     window.location.reload();
   };
 

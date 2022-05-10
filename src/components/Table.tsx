@@ -80,8 +80,11 @@ export default function CollapsibleTable(done: any) {
 
   useEffect(() => {
     const username = localStorage.getItem("displayName");
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
     axios
-      .get(`http://localhost:8000/gettable/:${username}`)
+      .get(`http://localhost:8000/gettable/:${username}`, config)
       .then((response) => {
         setFoodList(response.data[0].food);
       });

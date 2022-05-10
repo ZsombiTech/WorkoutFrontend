@@ -13,38 +13,52 @@ export default function Steps() {
   useEffect(() => {
     const username = localStorage.getItem("displayName");
     const data = { username: username };
-    axios.post("http://localhost:8000/getsteps", data).then((response) => {
-      if (response.data == "no") {
-        setExist(true);
-        setMessage("No data");
-      } else {
-        setDaily(response.data.stepcount);
-      }
-    });
-    axios.post("http://localhost:8000/getavg", data).then((response) => {
-      if (response.data == "no") {
-        setExist(true);
-        setMessage("No data");
-      } else {
-        setAverage(Math.round(response.data));
-      }
-    });
-    axios.post("http://localhost:8000/getoverall", data).then((response) => {
-      if (response.data == "no") {
-        setExist(true);
-        setMessage("No data");
-      } else {
-        setOverall(Math.round(response.data));
-      }
-    });
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+    axios
+      .post("http://localhost:8000/getsteps", data, config)
+      .then((response) => {
+        if (response.data == "no") {
+          setExist(true);
+          setMessage("No data");
+        } else {
+          setDaily(response.data.stepcount);
+        }
+      });
+    axios
+      .post("http://localhost:8000/getavg", data, config)
+      .then((response) => {
+        if (response.data == "no") {
+          setExist(true);
+          setMessage("No data");
+        } else {
+          setAverage(Math.round(response.data));
+        }
+      });
+    axios
+      .post("http://localhost:8000/getoverall", data, config)
+      .then((response) => {
+        if (response.data == "no") {
+          setExist(true);
+          setMessage("No data");
+        } else {
+          setOverall(Math.round(response.data));
+        }
+      });
   }, []);
 
   const handleAddStep = () => {
     const username = localStorage.getItem("displayName");
     const data = { username: username, stepcount: stepcount };
-    axios.post("http://localhost:8000/addsteps", data).then((response) => {
-      console.log("juhe");
-    });
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+    axios
+      .post("http://localhost:8000/addsteps", data, config)
+      .then((response) => {
+        console.log("juhe");
+      });
     window.location.reload();
   };
 
