@@ -1,6 +1,7 @@
 import react, { useState, useEffect } from "react";
 import "../styles/costum2.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import VisibilitySensor from "react-visibility-sensor";
 import axios from "axios";
 
 import "../styles/package.css";
