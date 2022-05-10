@@ -8,7 +8,8 @@ import "../styles/package.css";
 
 export default function HomeStats() {
   const [close, setClose] = useState<boolean>(true);
-  const [activity, setActivity] = useState<number>();
+  const [activity, setActivity] = useState<number>(0);
+  const [percen, setPercen] = useState<number>(0);
 
   const op = () => {
     setClose(!close);
@@ -19,6 +20,10 @@ export default function HomeStats() {
       setActivity(response.data);
     });
   }, []);
+
+  const handleTrig = () => {
+    setPercen(activity);
+  };
   return (
     <>
       {close && (
@@ -33,19 +38,26 @@ export default function HomeStats() {
           <div className="profilebox2">
             <div style={{ width: 200, height: 200 }}>
               {activity && (
-                <CircularProgressbar
-                  value={activity}
-                  text={`${activity}%`}
-                  styles={buildStyles({
-                    strokeLinecap: "butt",
-                    textSize: "16px",
-                    pathTransitionDuration: 1,
-                    pathColor: "#8761E6",
-                    textColor: "#8761E6",
-                    trailColor: "#2b2e43",
-                    backgroundColor: "##2f334a",
-                  })}
-                />
+                <VisibilitySensor>
+                  {({ isVisible }) => {
+                    if (isVisible) handleTrig();
+                    return (
+                      <CircularProgressbar
+                        value={percen}
+                        text={`${percen}%`}
+                        styles={buildStyles({
+                          strokeLinecap: "butt",
+                          textSize: "16px",
+                          pathTransitionDuration: 1,
+                          pathColor: "#8761E6",
+                          textColor: "#8761E6",
+                          trailColor: "#2b2e43",
+                          backgroundColor: "##2f334a",
+                        })}
+                      />
+                    );
+                  }}
+                </VisibilitySensor>
               )}
             </div>
           </div>
