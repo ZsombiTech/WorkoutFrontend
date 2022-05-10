@@ -1,17 +1,23 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import "../styles/costum2.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import axios from "axios";
 
 import "../styles/package.css";
 
 export default function HomeStats() {
   const [close, setClose] = useState<boolean>(true);
-
-  const percentage = 55;
+  const [activity, setActivity] = useState<number>();
 
   const op = () => {
     setClose(!close);
   };
+
+  useEffect(() => {
+    axios.get("http://localhost:8000/getrandom").then((response) => {
+      setActivity(response.data);
+    });
+  }, []);
   return (
     <>
       {close && (
@@ -25,26 +31,21 @@ export default function HomeStats() {
 
           <div className="profilebox2">
             <div style={{ width: 200, height: 200 }}>
-              <CircularProgressbar
-                value={percentage}
-                text={`${percentage}%`}
-                styles={buildStyles({
-                  strokeLinecap: "butt",
-                  textSize: "16px",
-
-                  // How long animation takes to go from one percentage to another, in seconds
-                  pathTransitionDuration: 0.5,
-
-                  // Can specify path transition in more detail, or remove it entirely
-                  // pathTransition: 'none',
-
-                  // Colors
-                  pathColor: "#8761E6",
-                  textColor: "#8761E6",
-                  trailColor: "#2b2e43",
-                  backgroundColor: "##2f334a",
-                })}
-              />
+              {activity && (
+                <CircularProgressbar
+                  value={activity}
+                  text={`${activity}%`}
+                  styles={buildStyles({
+                    strokeLinecap: "butt",
+                    textSize: "16px",
+                    pathTransitionDuration: 1,
+                    pathColor: "#8761E6",
+                    textColor: "#8761E6",
+                    trailColor: "#2b2e43",
+                    backgroundColor: "##2f334a",
+                  })}
+                />
+              )}
             </div>
           </div>
         </div>
