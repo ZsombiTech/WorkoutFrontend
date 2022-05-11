@@ -89,7 +89,11 @@ export default function ProfileSection(props: any) {
           <div className="profileshowadd hover:text-white" onClick={handleAdd}>
             <p>Add tasks</p>
           </div>
-          <PopUp2 open={open} setOpen={setOpen} />
+          <PopUp2
+            open={open}
+            setOpen={setOpen}
+            handleAddTr={props.handleAddTr}
+          />
         </div>
       </div>
     </>

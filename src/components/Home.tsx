@@ -9,6 +9,13 @@ export default function Home() {
   const [first, setFirst] = useState<boolean>(true);
   const [second, setSecond] = useState<boolean>(true);
 
+  const [added, setAdded] = useState<boolean>(false);
+
+  const handleAddTr = () => {
+    setAdded(!added);
+    console.log("ker");
+  };
+
   return (
     <>
       <div className="pageflexbox">
@@ -26,6 +33,8 @@ export default function Home() {
         second={second}
         setFirst={setFirst}
         setSecond={setSecond}
+        added={added}
+        handleAddTr={handleAddTr}
       />
     </>
   );

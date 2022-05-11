@@ -12,6 +12,8 @@ interface Taskint {
 export default function Tasks(props: any) {
   const [progress, setProgress] = useState<Array<Taskint>>();
   const [completed, setCompleted] = useState<Array<Taskint>>();
+  const [reload, setReload] = useState<boolean>(true);
+
   const handleFirst = () => {
     props.setFirst(!props.first);
   };
@@ -27,24 +29,25 @@ export default function Tasks(props: any) {
     axios
       .get(`http://localhost:8000/gettask/${username}`, config)
       .then((response) => {
-        if (!progress && !completed) {
-          setProgress(
-            response.data[0].tasks.filter(
-              (task: Taskint) => task.completed === false
-            )
-          );
-          setCompleted(
-            response.data[0].tasks.filter(
-              (task: Taskint) => task.completed === true
-            )
-          );
-        }
+        setProgress(
+          response.data[0].tasks.filter(
+            (task: Taskint) => task.completed === false
+          )
+        );
+        setCompleted(
+          response.data[0].tasks.filter(
+            (task: Taskint) => task.completed === true
+          )
+        );
+
+        setReload(false);
+        setReload(true);
       });
-  }, [completed, progress]);
+  }, [props.added]);
 
   return (
     <>
-      {props.show && (
+      {props.show && reload && (
         <>
           {props.first && (
             <div className="taskscontainer">

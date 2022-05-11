@@ -35,6 +35,7 @@ export default function Task(props: any) {
           )
         );
       });
+    window.location.reload();
   };
 
   return (

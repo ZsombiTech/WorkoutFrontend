@@ -26,6 +26,8 @@ function PopUpp(props: any) {
       .post("http://localhost:8000/addtask", data, config)
       .then((response) => {
         console.log(response);
+
+        window.location.reload();
       });
     setText("");
     closeModal();
