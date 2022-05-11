@@ -53,7 +53,7 @@ export default function ProfileSection(props: any) {
               <Link to="/profilepage">
                 <input
                   type="submit"
-                  className="profilesubmitbutton"
+                  className="profilesubmitbutton hover:bg-coollightdark"
                   value="Profile"
                 />
               </Link>
@@ -64,13 +64,19 @@ export default function ProfileSection(props: any) {
         </div>
         <hr className="text-white" />
         <div className="profileflexbox2">
-          <button className="profileshowtasks" onClick={handleShow}>
+          <button
+            className="profileshowtasks hover:text-white"
+            onClick={handleShow}
+          >
             Show tasks
           </button>
-          <button className="profileshowall" onClick={handleShow}>
+          <button
+            className="profileshowall hover:text-white"
+            onClick={handleShow}
+          >
             All
           </button>
-          <div className="profileshowadd" onClick={handleAdd}>
+          <div className="profileshowadd hover:text-white" onClick={handleAdd}>
             <p>Add tasks</p>
           </div>
           <PopUp2 open={open} setOpen={setOpen} />
