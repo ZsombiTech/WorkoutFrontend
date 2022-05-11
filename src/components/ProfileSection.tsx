@@ -8,6 +8,7 @@ export default function ProfileSection(props: any) {
   const [location, setLocation] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
+  const [popup, setPopup] = useState<boolean>(false);
 
   const handleShow = () => {
     props.setShow(!props.show);
@@ -34,6 +35,8 @@ export default function ProfileSection(props: any) {
       setUsername(username);
     }
   });
+
+  const handlePicture = () => {};
 
   return (
     <>
