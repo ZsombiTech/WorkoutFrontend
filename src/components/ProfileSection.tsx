@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/costum.css";
 import axios from "axios";
 import PopUp2 from "./PopUp2";
+import PopUp from "./PopUp";
 import { Link } from "react-router-dom";
 
 export default function ProfileSection(props: any) {
@@ -9,6 +10,7 @@ export default function ProfileSection(props: any) {
   const [open, setOpen] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [popup, setPopup] = useState<boolean>(false);
+  const [popupmes, setPopupMes] = useState<string>("");
 
   const handleShow = () => {
     props.setShow(!props.show);
@@ -36,10 +38,14 @@ export default function ProfileSection(props: any) {
     }
   });
 
-  const handlePicture = () => {};
+  const handlePicture = () => {
+    setPopupMes("The profile picture upload is under maintenance");
+    setPopup(true);
+  };
 
   return (
     <>
+      {popup && <PopUp open={popup} setOpen={setPopup} text={popupmes} />}
       <div className="profilebox">
         <div className="profileflexbox">
           <div className="profilepicture">
@@ -47,6 +53,7 @@ export default function ProfileSection(props: any) {
               src="https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
               alt="Profile Picture"
               className="profilepictureimg hover:shadow-md hover:shadow-white"
+              onClick={handlePicture}
             />
           </div>
           <div className="profiletext">

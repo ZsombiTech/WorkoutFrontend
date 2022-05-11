@@ -232,8 +232,11 @@ input#username::placeholder {
     margin-left: 0rem;
   }
   .profilepictureimg {
-    width: 40vw;
-    height: 30vw;
+    width: 20vw;
+    height: 20vw;
+  }
+  .profiletext {
+    margin-left: 3vw;
   }
   .profilebox5 {
     width: 22rem;

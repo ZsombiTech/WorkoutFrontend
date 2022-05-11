@@ -27,16 +27,18 @@ export default function Tasks(props: any) {
     axios
       .get(`http://localhost:8000/gettask/${username}`, config)
       .then((response) => {
-        setProgress(
-          response.data[0].tasks.filter(
-            (task: Taskint) => task.completed === false
-          )
-        );
-        setCompleted(
-          response.data[0].tasks.filter(
-            (task: Taskint) => task.completed === true
-          )
-        );
+        if (!progress && !completed) {
+          setProgress(
+            response.data[0].tasks.filter(
+              (task: Taskint) => task.completed === false
+            )
+          );
+          setCompleted(
+            response.data[0].tasks.filter(
+              (task: Taskint) => task.completed === true
+            )
+          );
+        }
       });
   }, [completed, progress]);
 
