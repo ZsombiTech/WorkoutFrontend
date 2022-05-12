@@ -19,7 +19,10 @@ export default function ProfilePage() {
     };
 
     axios
-      .get(`http://localhost:8000/getProfileData/:${userid}`, config)
+      .get(
+        `http://workoutbackendd.herokuapp.com/getProfileData/:${userid}`,
+        config
+      )
       .then((response) => {
         setUsername(response.data.username);
         setLocatione(response.data.location);

@@ -47,7 +47,7 @@ export default function RegisterInSide(props: any) {
 
     if (!blank) {
       axios
-        .post("http://localhost:8000/auth/register", {
+        .post("http://workoutbackendd.herokuapp.com/auth/register", {
           username: name,
           email: email,
           password: password,

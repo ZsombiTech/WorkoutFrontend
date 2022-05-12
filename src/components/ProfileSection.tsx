@@ -29,7 +29,10 @@ export default function ProfileSection(props: any) {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     axios
-      .get(`http://localhost:8000/getProfileData/:${userid}`, config)
+      .get(
+        `http://workoutbackendd.herokuapp.com/getProfileData/:${userid}`,
+        config
+      )
       .then((response) => {
         setLocation(response.data.location);
       });

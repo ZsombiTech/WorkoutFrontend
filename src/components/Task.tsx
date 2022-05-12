@@ -14,7 +14,7 @@ export default function Task(props: any) {
     const config = {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
-    axios.delete("http://localhost:8000/deletetask", {
+    axios.delete("http://workoutbackendd.herokuapp.com/deletetask", {
       data: {
         description: props.description,
         username: username,
@@ -22,7 +22,7 @@ export default function Task(props: any) {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     axios
-      .get(`http://localhost:8000/gettask/${username}`, config)
+      .get(`http://workoutbackendd.herokuapp.com/gettask/${username}`, config)
       .then((response) => {
         props.setProgress(
           response.data[0].tasks.filter(

@@ -17,7 +17,7 @@ export default function Steps() {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     axios
-      .post("http://localhost:8000/getsteps", data, config)
+      .post("http://workoutbackendd.herokuapp.com/getsteps", data, config)
       .then((response) => {
         if (response.data == "no") {
           setExist(true);
@@ -27,7 +27,7 @@ export default function Steps() {
         }
       });
     axios
-      .post("http://localhost:8000/getavg", data, config)
+      .post("http://workoutbackendd.herokuapp.com/getavg", data, config)
       .then((response) => {
         if (response.data == "no") {
           setExist(true);
@@ -37,7 +37,7 @@ export default function Steps() {
         }
       });
     axios
-      .post("http://localhost:8000/getoverall", data, config)
+      .post("http://workoutbackendd.herokuapp.com/getoverall", data, config)
       .then((response) => {
         if (response.data == "no") {
           setExist(true);
@@ -55,7 +55,7 @@ export default function Steps() {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     axios
-      .post("http://localhost:8000/addsteps", data, config)
+      .post("http://workoutbackendd.herokuapp.com/addsteps", data, config)
       .then((response) => {
         console.log("juhe");
       });

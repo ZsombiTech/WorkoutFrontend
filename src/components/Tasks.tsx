@@ -27,7 +27,7 @@ export default function Tasks(props: any) {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     axios
-      .get(`http://localhost:8000/gettask/${username}`, config)
+      .get(`http://workoutbackendd.herokuapp.com/gettask/${username}`, config)
       .then((response) => {
         setProgress(
           response.data[0].tasks.filter(

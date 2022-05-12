@@ -84,7 +84,7 @@ export default function CollapsibleTable(done: any) {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     axios
-      .get(`http://localhost:8000/gettable/:${username}`, config)
+      .get(`http://workoutbackendd.herokuapp.com/gettable/:${username}`, config)
       .then((response) => {
         setFoodList(response.data[0].food);
       });
