@@ -23,7 +23,7 @@ function PopUpp(props: any) {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     axios
-      .post("http://localhost:8000/addtask", data, config)
+      .post("http://workoutbackendd.herokuapp.com/addtask", data, config)
       .then((response) => {
         console.log(response);
 

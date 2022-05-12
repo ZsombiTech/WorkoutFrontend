@@ -19,9 +19,11 @@ export default function HomeStats() {
     const config = {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
-    axios.get("http://localhost:8000/getrandom", config).then((response) => {
-      setActivity(response.data);
-    });
+    axios
+      .get("http://workoutbackendd.herokuapp.com/getrandom", config)
+      .then((response) => {
+        setActivity(response.data);
+      });
   }, []);
 
   const handleTrig = () => {

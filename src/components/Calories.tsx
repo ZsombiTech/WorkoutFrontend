@@ -19,7 +19,7 @@ export default function Calories() {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     axios
-      .post("http://localhost:8000/getcalories", data, config)
+      .post("http://workoutbackendd.herokuapp.com/getcalories", data, config)
       .then((response) => {
         if (response.data == "no") {
           setExist(true);
@@ -29,7 +29,7 @@ export default function Calories() {
         }
       });
     axios
-      .post("http://localhost:8000/getavgcal", data, config)
+      .post("http://workoutbackendd.herokuapp.com/getavgcal", data, config)
       .then((response) => {
         if (response.data == "no") {
           setExist(true);
@@ -39,7 +39,7 @@ export default function Calories() {
         }
       });
     axios
-      .post("http://localhost:8000/getoverallcal", data, config)
+      .post("http://workoutbackendd.herokuapp.com/getoverallcal", data, config)
       .then((response) => {
         if (response.data == "no") {
           setExist(true);
@@ -57,7 +57,7 @@ export default function Calories() {
     const username = localStorage.getItem("displayName");
     const data = { username: username, calories: calories };
     axios
-      .post("http://localhost:8000/addcalories", data, config)
+      .post("http://workoutbackendd.herokuapp.com/addcalories", data, config)
       .then((response) => {
         console.log("juhe");
       });

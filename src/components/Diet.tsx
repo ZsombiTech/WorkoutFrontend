@@ -21,7 +21,7 @@ export default function Diet() {
     };
 
     axios
-      .post("http://localhost:8000/addtable", addfood, config)
+      .post("http://workoutbackendd.herokuapp.com/addtable", addfood, config)
       .then((response) => {
         window.location.reload();
       });
