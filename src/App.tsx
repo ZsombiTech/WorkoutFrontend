@@ -24,19 +24,21 @@ function App() {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     };
 
-    axios.post("http://localhost:8000/auth/verify", {}, config).then(
-      (res) => {
-        if (res.data.response === "Good") {
-          if (logged != true) {
-            setLogged(true);
+    axios
+      .post("http://workoutbackendd.herokuapp.com/auth/verify", {}, config)
+      .then(
+        (res) => {
+          if (res.data.response === "Good") {
+            if (logged != true) {
+              setLogged(true);
+            }
+            console.log("run");
           }
-          console.log("run");
+        },
+        (error) => {
+          console.log(error);
         }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      );
   }, [logged]);
 
   return (

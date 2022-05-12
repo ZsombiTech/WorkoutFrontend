@@ -89,7 +89,7 @@ export default function ProfilePage() {
     };
 
     axios
-      .post("http://localhost:8000/setloc", data, config)
+      .post("http://workoutbackendd.herokuapp.com/setloc", data, config)
       .then((response) => {
         setLocw();
       });
@@ -108,7 +108,7 @@ export default function ProfilePage() {
     };
 
     axios
-      .post("http://localhost:8000/setdesc", data, config)
+      .post("http://workoutbackendd.herokuapp.com/setdesc", data, config)
       .then((response) => {
         setDescw();
       });

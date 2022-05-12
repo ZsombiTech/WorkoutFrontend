@@ -61,6 +61,7 @@ export default function Calories() {
       .then((response) => {
         console.log("juhe");
       });
+
     window.location.reload();
   };
 
